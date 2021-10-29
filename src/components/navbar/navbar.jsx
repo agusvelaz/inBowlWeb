@@ -16,6 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartWidget from './cartWidget'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -182,15 +183,7 @@ export default function NavBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             
-            <IconButton
-              size="large"
-              aria-label="show 0 new items in cart"
-              color="inherit"
-            >
-              <Badge badgeContent={'0'} color="error">
-                <ShoppingCartIcon/>
-              </Badge>
-            </IconButton>
+            <CartWidget/>
             <IconButton
               size="large"
               edge="end"
