@@ -2,9 +2,6 @@
   text-align: center;
 }
 
-
-
-
 /* CARDS */
 .cardUl{
   display: flex;
@@ -12,9 +9,27 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: 0 100px
   
 }
 .card{
   margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.stockActions{
+  display: flex;
+  
+}
+.cardAction{
+  display: flex;
+  flex-direction: row;
+
+}
+.buttonCart{
+  margin: 8px;
 }
 
