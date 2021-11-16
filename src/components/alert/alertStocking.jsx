@@ -23,7 +23,8 @@ const AlertStocking = ({stock, name, message}) =>{
                 horizontal: 'center',}}
             open={open}  
             onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+        <Alert variant="filled" onClose={handleClose} severity="info" sx={{ width: '100%' , height: "300"}}>
+            <AlertTitle>¡UPS!</AlertTitle>
             No puedes agregar mas cantidad porque el producto {name} cuenta con solo {stock} unidades en stock.
         </Alert>
         </Snackbar>
