@@ -36,7 +36,7 @@ export default function ItemCount({ stock, name }) {
             onClick={() => {
               initial < stock
                 ? setInitial(initial + 1)
-                : setErrorMessage("a")
+                : setErrorMessage("error")
                 // alert(`*¡UPS!* - El producto ${name} cuenta con solo ${stock} unidades en stock`);
             }}
           >
@@ -56,7 +56,9 @@ export default function ItemCount({ stock, name }) {
           Add to Cart
         </Button>
         {errorMessage &&  
-          <AlertStocking stock={stock} name={name} message={errorMessage}/>
+          <AlertStocking stock={stock} name={name} message={setTimeout(() => {
+            setErrorMessage("")
+          }, 10000)}/>
           
         }
       </CardActions> 

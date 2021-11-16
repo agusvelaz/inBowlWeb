@@ -17,9 +17,14 @@ const AlertStocking = ({stock, name, message}) =>{
       setOpen(false);
     };
     return(
-        <Snackbar open={open}  onClose={handleClose}>
+        <Snackbar 
+            anchorOrigin={{ 
+                vertical: 'top',
+                horizontal: 'center',}}
+            open={open}  
+            onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-            El producto {name} cuenta con solo {stock} unidades en stock
+            No puedes agregar mas cantidad porque el producto {name} cuenta con solo {stock} unidades en stock.
         </Alert>
         </Snackbar>
     )
