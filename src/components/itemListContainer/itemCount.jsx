@@ -1,12 +1,22 @@
 
-import {CardActions, Button} from "@mui/material";
+import {CardActions, Button, Alert, AlertTitle} from "@mui/material";
 import { AddShoppingCart } from "@material-ui/icons";
 import { useState } from "react";
-export default function ItemCount({ stock, name, }) {
+import AlertStocking from "../alert/alertStocking"
+
+
+
+export default function ItemCount({ stock, name }) {
     const [initial, setInitial] = useState(1);
+    const [errorMessage, setErrorMessage] = useState("")
+    console.log(errorMessage)
+    
     
     return (
+      
       <CardActions className="cardAction">
+
+
         <div className="stockActions">
           <Button
             className="buttonCart"
@@ -26,7 +36,8 @@ export default function ItemCount({ stock, name, }) {
             onClick={() => {
               initial < stock
                 ? setInitial(initial + 1)
-                : alert(`*¡UPS!* - El producto ${name} cuenta con solo ${stock} unidades en stock`);
+                : setErrorMessage("a")
+                // alert(`*¡UPS!* - El producto ${name} cuenta con solo ${stock} unidades en stock`);
             }}
           >
             +
@@ -44,7 +55,12 @@ export default function ItemCount({ stock, name, }) {
         >
           Add to Cart
         </Button>
-      </CardActions>
+        {errorMessage &&  
+          <AlertStocking stock={stock} name={name} message={errorMessage}/>
+          
+        }
+      </CardActions> 
     );
+    console.log(errorMessage)
   }
 
