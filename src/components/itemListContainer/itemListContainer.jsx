@@ -50,7 +50,7 @@ export default function ItemListContainer() {
 
   return (
     <div>
-      <Typography variant="h3" color="white" sx={{ margin: 2 }}>
+      <Typography variant="h3" color="white" sx={{ marginTop: 15 }}>
         Menu
       </Typography>
 
