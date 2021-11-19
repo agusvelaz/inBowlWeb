@@ -1,22 +1,21 @@
+import "./App.css";
 
-import './App.css';
-import NavBar from './components/navbar/navbar'
-import ItemListContainer from './components/itemListContainer/itemListContainer'
+import NavBar from "./components/navbar/navbar";
+import ItemListContainer from "./components/itemListContainer/itemListContainer";
+import Home from "./components/home/home";
 
-import { StyledEngineProvider } from '@mui/material/styles';
+import { StyledEngineProvider } from "@mui/material/styles";
 // da prioridad a mis estilos
 
 function App() {
-  
   return (
-    <div className="App"> 
-    <StyledEngineProvider injectFirst>
-          <NavBar/>
-          <ItemListContainer action="!"/>
-    </StyledEngineProvider>
-      
+    <div className="App">
+      <StyledEngineProvider injectFirst>
+        <Home/>
+        <NavBar />
+        <ItemListContainer action="!" />
+      </StyledEngineProvider>
     </div>
-    
   );
 }
 

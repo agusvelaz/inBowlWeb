@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.home{
+  height: 99vh;
+  width: 100%;
+  background-image: url(../src/components/home/variant1.png);
+  background-size: cover;
+}
+
 /* CARDS */
 .cardUl{
   display: flex;
@@ -9,8 +16,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 0 100px
-  
+  margin: 0 100px,
 }
 .card{
   margin: 30px;

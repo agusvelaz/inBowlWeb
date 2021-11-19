@@ -1,10 +1,11 @@
-import { Component } from 'react';
+// import { Link } from 'react';
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,7 +17,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     brandTitle:{
-        color: '#f8c463',
+        color: 'white',
     }
 
 })
@@ -130,7 +131,13 @@ export default function NavBar() {
             {/* 🔥 */}
           </Typography>
           
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1 }} > 
+          
+          <Button color="inherit"> Home </Button>
+          <Button color="inherit"> Productos </Button> 
+          <Button color="inherit"> Contacto </Button> 
+          
+          </Box>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <IconButton
               size="large"
