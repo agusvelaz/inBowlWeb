@@ -1,5 +1,5 @@
 
-import {CardActions, Button, Alert, AlertTitle} from "@mui/material";
+import {CardActions, Button} from "@mui/material";
 import { AddShoppingCart } from "@material-ui/icons";
 import { useState } from "react";
 import AlertStocking from "../alert/alertStocking"
@@ -63,6 +63,6 @@ export default function ItemCount({ stock, name }) {
         }
       </CardActions> 
     );
-    console.log(errorMessage)
+
   }
 

@@ -5,8 +5,9 @@
 .home{
   height: 99vh;
   width: 100%;
-  background-image: url(../src/components/home/variant1.png);
+  background-image: url(../src/components/home/variant2.png);
   background-size: cover;
+   
 }
 
 /* CARDS */
@@ -19,10 +20,17 @@
   margin: 0 100px,
 }
 .card{
-  margin: 30px;
+  margin: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.3s ease;
+
+}
+.card:hover{
+  /* box-shadow: 1px 3px 6px 3px rgba(196, 196, 196, 0.226); */
+  /* transform: scale(1.1) ; */
+  transition: all 0.2s ease;
 
 }
 

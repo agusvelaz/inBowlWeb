@@ -1,30 +1,33 @@
-// import { Link } from 'react';
+import { Link } from "react-router-dom";
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {makeStyles} from '@material-ui/core/styles'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import {Box, Toolbar, IconButton, Button, Typography} from "@mui/material/";
+import Badge from "@mui/material/Badge";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-    brandTitle:{
-        color: 'white',
-    }
-
-})
-
+  brandTitle: {
+    color: "white",
+    textDecoration: "none",
+  },
+  linksRef: {
+    color: "white",
+    textDecoration: "none",
+  },
+  menuPaper: {
+    backgroundColor: "#011013"
+  }
+  
+});
 
 export default function NavBar() {
-  const classes = useStyles()
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -48,107 +51,106 @@ export default function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
+  const menuId = "primary-search-account-menu";
+  // const renderMenu = (
+  //   <Menu
+  //     className={classes.navList}
+  //     anchorEl={anchorEl}
+  //     anchorOrigin={{
+  //       vertical: "top",
+  //       horizontal: "right",
+  //     }}
+  //     id={menuId}
+  //     keepMounted
+  //     transformOrigin={{
+  //       vertical: "top",
+  //       horizontal: "right",
+  //     }}
+  //     open={isMenuOpen}
+  //     onClose={handleMenuClose}
+  //   >
+  //     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+  //     <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+  //   </Menu>
+  // );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
-    
     <Menu
+      classes={{ paper: classes.menuPaper }}
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={mobileMenuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      
+      
     >
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={"0"} color="error">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-        <p>Cart</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+
+        <Link to="/" className={classes.linksRef}><MenuItem>Home</MenuItem> </Link>
+        <Link to="/menu" className={classes.linksRef}><MenuItem>Menu</MenuItem> </Link>
+        <Link to="/nosotros" className={classes.linksRef}><MenuItem>Nosotros</MenuItem> </Link>
+ 
+    
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}  >
-      <AppBar position="fixed" className="navBar" color="primary">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position="fixed"
+        className="navBar"
+        color="primary"
+        sx={{ padding: 1 }}
+      >
         <Toolbar>
-          {/* BRAND ICON */}
-          <Typography
-            variant="h4"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'block', sm: 'block' } }}
-            className={classes.brandTitle}
-          >
-            inBowl
-            {/* 🔥 */}
-          </Typography>
-          
-          <Box sx={{ flexGrow: 1 }} > 
-          
-          <Button color="inherit"> Home </Button>
-          <Button color="inherit"> Productos </Button> 
-          <Button color="inherit"> Contacto </Button> 
-          
+          <Box sx={{ flexGrow: 1, textAlign: "left" }}>
+            {/* BRAND ICON */}
+            <Link to="/" className={classes.brandTitle}>
+            <Typography
+              variant="h4"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "block", sm: "block" } }}
+              className={classes.brandTitle}
+            >
+              inBowl
+              {/* 🔥 */}
+            </Typography>
+            </Link>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
+
+          <Box  sx={{ display: { xs:"none" , md: "flex" } }}>
+            <Link to="/" className={classes.linksRef}>
+              <Button color="inherit"> Home</Button>
+            </Link>
+            <Link to="/menu" className={classes.linksRef}>
+              <Button color="inherit"> Menu </Button>
+            </Link>
+            <Link to="/nosotros" className={classes.linksRef}>
+              <Button color="inherit">Nosotros</Button>
+            </Link>
+          </Box>
+
+          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <IconButton
               size="large"
               aria-label="show 0 new items in cart"
               color="inherit"
             >
               <Badge badgeContent={"0"} color="error">
-                <ShoppingCartIcon/>
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
-        
+
             <IconButton
               size="large"
               edge="end"
@@ -161,7 +163,7 @@ export default function NavBar() {
               <AccountCircle />
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -176,7 +178,7 @@ export default function NavBar() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMenu} */}
     </Box>
   );
 }
