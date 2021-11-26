@@ -10,6 +10,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles({
+  card:{ 
+    margin: 16,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    transition: "all 0.3s ease",
+    backgroundColor: "#011013",
+    color: "#ffffff",
+  },
   cardContent: {
     padding: 0,
   },
@@ -18,10 +27,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ItemListContainer(itemsList, setCurrentItems) {
+export default function ItemListContainer({itemsList, setCurrentItems}) {
   const classes = useStyles();
-  const itemsMenu = itemsList.itemsList;
-  console.log(itemsMenu);
+  console.log(itemsList);
   return (
     <Box
       fixed
@@ -38,25 +46,25 @@ export default function ItemListContainer(itemsList, setCurrentItems) {
         Menu
       </Typography>
       <div className="cardUl">
-        {itemsMenu?.map((i) => {
+        {itemsList?.map((i) => {
           console.log(i);
           
           return (
             <Link to ={`/menu/${i.id}`} className={classes.linkCard} onClick={() => setCurrentItems(i)}>
-            <Card sx={{ maxWidth: 300, minWidth: 300 }} className="card">
+            <Card sx={{ maxWidth: 300, minWidth: 300 }} className={classes.card} >
               <CardActionArea >
                 <CardContent className={classes.cardContent}>
                   {/* <ItemDetail idItem={i.id} /> */}
                   <CardMedia component="img" image={i.img} alt="green iguana" />
                   <Typography
-                    variant="h6"
-                    color="text.secondary"
-                    sx={{ marginTop: 2 }}
+                    variant="h5"
+                    color="#fffff"
+                    sx={{ marginTop: 2 }}  
                   >
                     ${i.price}
                   </Typography>
 
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h6" component="div" >
                     {i.name}
                   </Typography>
                 </CardContent>

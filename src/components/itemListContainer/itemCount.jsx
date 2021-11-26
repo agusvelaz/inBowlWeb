@@ -5,8 +5,18 @@ import { useState } from "react";
 import AlertStocking from "../alert/alertStocking"
 
 
+import { makeStyles } from "@material-ui/core/styles";
 
+
+const useStyles = makeStyles({
+  buttonCart:{
+    color: "#ffffff",
+    margin: "10px",
+    backgroundColor: '#000',
+  },
+});
 export default function ItemCount({ stock, name }) {
+    const classes = useStyles();
     const [initial, setInitial] = useState(1);
     const [errorMessage, setErrorMessage] = useState("")
     console.log(errorMessage)
@@ -19,7 +29,8 @@ export default function ItemCount({ stock, name }) {
 
         <div className="stockActions">
           <Button
-            className="buttonCart"
+            className={classes.buttonCart}
+
             sx={{ minWidth: 35 }}
             onClick={() => {
               initial > 1 
@@ -31,7 +42,7 @@ export default function ItemCount({ stock, name }) {
           </Button>
           <p>{initial}</p>
           <Button
-            className="buttonCart"
+            className={classes.buttonCart}
             sx={{ minWidth: 35 }}
             onClick={() => {
               initial < stock
@@ -43,8 +54,10 @@ export default function ItemCount({ stock, name }) {
             +
           </Button>
         </div>
+        <p>({stock} disponibles)</p>
         <Button
-          className="buttonCart"
+          className="add  Cart"
+          sx={{ margin: 3 , backgroundColor: '#000'}}
           variant="contained"
           disableElevation
           endIcon={<AddShoppingCart />}

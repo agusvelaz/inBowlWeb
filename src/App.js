@@ -7,7 +7,7 @@ import ItemListContainer from "./components/itemListContainer/itemList";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemListContainer/itemDetail";
 
-import CartContext from "./contexts/cartContext"
+import CartContext from "./contexts/cartContext";
 import data from "./dataItems";
 
 import { StyledEngineProvider } from "@mui/material/styles";
@@ -21,7 +21,7 @@ const getData = () => {
       if (!dataItems) reject(new Error("Error al devolver los datos"));
 
       resolve({ dataItems });
-    }, 1000);
+    }, 4000);
   });
 };
 
