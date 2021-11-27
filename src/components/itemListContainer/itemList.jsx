@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavBarCat from "../navBar/navCat";
 import Card from "@mui/material/Card";
+
+import data from "../../dataItems";
 import {
   CardContent,
   CardMedia,
@@ -10,6 +12,27 @@ import {
   Box,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
+
+const dataItems = data.items;
+
+const getData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!dataItems) reject(new Error("Error al devolver los datos"));
+
+      resolve({ dataItems });
+    }, 2000);
+  });
+};
+
+async function GetDataItems() {
+  try {
+    const dataItemsObj = await getData();
+    return dataItemsObj.dataItems;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 const useStyles = makeStyles({
   card: {
@@ -29,15 +52,26 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ItemListContainer({ itemsList, setCurrentItems }) {
+export default function ItemListContainer({ setCurrentItems }) {
   const classes = useStyles();
-  const [category, setCategory] = useState();
-  const [myItems, setMyItems] = useState([]);
+  const [category, setCategory] = useState({});
+
+  const [itemsList, setItems] = useState([]);
+  const [showItemList, setShowItemList]= useState([])
+  useEffect(() => {
+    GetDataItems().then((resp) => {
+      setItems(resp)
+      setShowItemList(resp)
+    });
+  }, []);
   console.log(itemsList);
-  console.log(category);
+  console.log(showItemList)
+  useEffect(() => {
+    setItems(itemsList);
+  }, []);
   return (
     <div>
-      <NavBarCat itemsList={itemsList} setCategory={setCategory} />
+      <NavBarCat itemsList={itemsList} setCategory={setCategory} setShowItemList={setShowItemList} />
       <Box
         fixed
         sx={{
@@ -49,14 +83,15 @@ export default function ItemListContainer({ itemsList, setCurrentItems }) {
           Menu
         </Typography>
         <div className="cardUl">
-            {itemsList?.map((i) => {
+            {showItemList?.map((i) => {
               console.log(i);
 
               return (
                 <Link
                   to={`/menu/${i.id}`}
                   className={classes.linkCard}
-                  onClick={() => setCurrentItems(i)}
+                  onClick={() => setCurrentItems(i) }
+                  
                 >
                   <Card
                     sx={{ maxWidth: 300, minWidth: 300 }}

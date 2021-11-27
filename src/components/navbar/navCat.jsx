@@ -67,18 +67,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavBarCat({ itemsList, setCategory }) {
+export default function NavBarCat({ itemsList,  setShowItemList}) {
   const classes = useStyles();
 //   const [search, setSearch] = useState("");
   console.log(itemsList);
 
+
+  //SET FILTER CATEGORY
+  let itemsFilt = []
   const setItemsCategori = (cat) => {
     console.log(cat);
     itemsList?.map((i) => {
       const name = i.name.toLowerCase();
       const category = cat.toLowerCase();
-      // console.log(category + name)
-      if (name.includes(category)) setCategory(i);
+      if (name.includes(category)) {
+      console.log(i);
+      itemsFilt.push(i)
+      setShowItemList(itemsFilt)
+      console.log(itemsFilt)
+      }
     });
   };
 
@@ -106,14 +113,15 @@ export default function NavBarCat({ itemsList, setCategory }) {
            <Link
             className={classes.linksRef}
             to={`/menu`}
-            onClick={() => setItemsCategori("vegetable")}
+            onClick={() => setShowItemList(itemsList)}
           >
             <MenuItem>Full Menu</MenuItem>
           </Link>
           <Link
             className={classes.linksRef}
-            to={`/category/vegetable`}
             onClick={() => setItemsCategori("vegetable")}
+            to={`/category/vegetable`}
+            
           >
             <MenuItem>Vegetable</MenuItem>
           </Link>
