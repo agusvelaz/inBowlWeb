@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 
@@ -15,15 +16,26 @@ const useStyles = makeStyles({
     color: "#ffffff",
     display: "flex",
   },
+  linksRef: {
+    color: "white",
+    textDecoration: "none",
+  },
 });
 
 export default function ItemDetail({ currentItems }) {
   const classes = useStyles();
   return (
-    <div>
+    <Box >
+       
+      <Link to="/menu" className={classes.linksRef}>
+      <Typography component="div" variant="h6" color="#ffffff"  sx={{ marginTop: 1, marginBottom:1,marginLeft: { sm: 20, xl: 35 },
+          marginRight: { sm: 20, xl: 35 },  textAlign: "initial" }}>
+               👈Volver al menu
+      </Typography>
+      </Link>
       <Card
         sx={{
-          marginTop: 13,
+          marginTop: 0,
           marginLeft: { sm: 20, xl: 35 },
           marginRight: { sm: 20, xl: 35 },
         }}
@@ -76,6 +88,6 @@ export default function ItemDetail({ currentItems }) {
 
             <ItemCount stock={currentItems.stock} name={currentItems.name} />
           </div> */}
-    </div>
+    </Box>
   );
 }

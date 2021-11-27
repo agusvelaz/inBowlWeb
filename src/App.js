@@ -7,10 +7,10 @@ import ItemListContainer from "./components/itemListContainer/itemList";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemListContainer/itemDetail";
 
-import CartContext from "./contexts/cartContext";
 import data from "./dataItems";
 
 import { StyledEngineProvider } from "@mui/material/styles";
+
 // da prioridad a mis estilos
 
 const dataItems = data.items;
@@ -37,6 +37,8 @@ async function GetDataItems() {
 function App() {
   const [items, setItems] = useState([]);
   const [currentItems, setCurrentItems] = useState({});
+  const [changeItems, setChangeItems] = useState([])
+ 
 
   useEffect(() => {
     GetDataItems().then((resp) => {
@@ -45,6 +47,8 @@ function App() {
   }, []);
   console.log(items);
   console.log(currentItems);
+  console.log(changeItems);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -58,8 +62,17 @@ function App() {
                 <ItemListContainer
                   itemsList={items}
                   setCurrentItems={setCurrentItems}
+                  setChangeItems={setChangeItems}
+
                 />
               }
+            />
+            <Route
+              path="/category/:cat"
+              element={<ItemListContainer
+                itemsList={items}
+
+              />}
             />
             <Route
               path="/menu/:itemID"

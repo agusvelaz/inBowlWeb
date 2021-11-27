@@ -11,7 +11,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(themeConfig =>({
+  offset: themeConfig.mixins.toolbar,
   brandTitle: {
     color: "white",
     textDecoration: "none",
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
     backgroundColor: "#011013"
   }
   
-});
+}));
 
 export default function NavBar() {
   const classes = useStyles();
@@ -105,16 +106,16 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <div className={classes.offset}/>
       <AppBar
         position="fixed"
         className="navBar"
         color="primary"
-        sx={{ padding: 1 }}
       >
         <Toolbar>
           <Box sx={{ flexGrow: 1, textAlign: "left" }}>
             {/* BRAND ICON */}
-            <Link to="/" className={classes.brandTitle}>
+            
             <Typography
               variant="h4"
               noWrap
@@ -122,10 +123,12 @@ export default function NavBar() {
               sx={{ display: { xs: "block", sm: "block" } }}
               className={classes.brandTitle}
             >
+              <Link to="/" className={classes.brandTitle}>
               inBowl
+              </Link>
               {/* 🔥 */}
             </Typography>
-            </Link>
+           
           </Box>
 
           <Box  sx={{ display: { xs:"none" , md: "flex" } }}>

@@ -6,7 +6,7 @@ const data = {
             price: 620,
             info:"Soy de vegetales",
             ingr:"Tempura made from finely cut pieces of burdock, spring onion, carrot, parsnip, peppers, shiitake mushrooms and edamame, served on a bed of multi-grain rice",
-            categoria: "",
+            categoria: "Vegetable",
             img: "https://cdn.waso.tokyo/uploads/dish_item/image/252/w980_28b744da-b557-45fc-a8a9-0f9e22c39607.jpg",
             stock: 5,
           },

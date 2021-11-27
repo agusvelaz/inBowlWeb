@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import NavBarCat from "../navBar/navCat";
 import Card from "@mui/material/Card";
-import { CardContent, CardMedia, CardActionArea, Typography, Box } from "@mui/material";
-
-
+import {
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  Typography,
+  Box,
+} from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 
-
-
 const useStyles = makeStyles({
-  card:{ 
+  card: {
     margin: 16,
     display: "flex",
     flexDirection: "column",
@@ -27,54 +29,65 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ItemListContainer({itemsList, setCurrentItems}) {
+export default function ItemListContainer({ itemsList, setCurrentItems }) {
   const classes = useStyles();
+  const [category, setCategory] = useState();
+  const [myItems, setMyItems] = useState([]);
   console.log(itemsList);
+  console.log(category);
   return (
-    <Box
-      fixed
-      sx={{
-        paddingLeft: { xs: 0, sm: 20, xl: 35 },
-        paddingRight: { xs: 0, sm: 20, xl: 35 },
-      }}
-    >
-      <Typography
-        variant="h3"
-        color="white"
-        sx={{ paddingTop: 5, marginTop: 9 }}
+    <div>
+      <NavBarCat itemsList={itemsList} setCategory={setCategory} />
+      <Box
+        fixed
+        sx={{
+          paddingLeft: { xs: 0, sm: 20, xl: 35 },
+          paddingRight: { xs: 0, sm: 20, xl: 35 },
+        }}
       >
-        Menu
-      </Typography>
-      <div className="cardUl">
-        {itemsList?.map((i) => {
-          console.log(i);
-          
-          return (
-            <Link to ={`/menu/${i.id}`} className={classes.linkCard} onClick={() => setCurrentItems(i)}>
-            <Card sx={{ maxWidth: 300, minWidth: 300 }} className={classes.card} >
-              <CardActionArea >
-                <CardContent className={classes.cardContent}>
-                  {/* <ItemDetail idItem={i.id} /> */}
-                  <CardMedia component="img" image={i.img} alt="green iguana" />
-                  <Typography
-                    variant="h5"
-                    color="#fffff"
-                    sx={{ marginTop: 2 }}  
-                  >
-                    ${i.price}
-                  </Typography>
+        <Typography variant="h3" color="white" sx={{ paddingTop: 2 }}>
+          Menu
+        </Typography>
+        <div className="cardUl">
+            {itemsList?.map((i) => {
+              console.log(i);
 
-                  <Typography gutterBottom variant="h6" component="div" >
-                    {i.name}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            </Link>
-          );
-        })}
-      </div>
-    </Box>
+              return (
+                <Link
+                  to={`/menu/${i.id}`}
+                  className={classes.linkCard}
+                  onClick={() => setCurrentItems(i)}
+                >
+                  <Card
+                    sx={{ maxWidth: 300, minWidth: 300 }}
+                    className={classes.card}
+                  >
+                    <CardActionArea>
+                      <CardContent className={classes.cardContent}>
+                        <CardMedia
+                          component="img"
+                          image={i.img}
+                          alt="green iguana"
+                        />
+                        <Typography
+                          variant="h5"
+                          color="#fffff"
+                          sx={{ marginTop: 2 }}
+                        >
+                          ${i.price}
+                        </Typography>
+
+                        <Typography gutterBottom variant="h6" component="div">
+                          {i.name}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Link>
+              );
+            })}
+        </div>
+      </Box>
+    </div>
   );
-  
 }
