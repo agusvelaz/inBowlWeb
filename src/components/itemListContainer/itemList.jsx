@@ -1,38 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavBarCat from "../navBar/navCat";
-import Card from "@mui/material/Card";
-
-import data from "../../dataItems";
+import {useContext} from 'react'
+import { makeStyles } from "@material-ui/core/styles";
 import {
   CardContent,
   CardMedia,
   CardActionArea,
   Typography,
   Box,
+  Card
 } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
 
-const dataItems = data.items;
+import ItemContext from '../../contexts/itemContext'
+import NavBarCat from "../navBar/navCat";
 
-const getData = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (!dataItems) reject(new Error("Error al devolver los datos"));
 
-      resolve({ dataItems });
-    }, 2000);
-  });
-};
 
-async function GetDataItems() {
-  try {
-    const dataItemsObj = await getData();
-    return dataItemsObj.dataItems;
-  } catch (err) {
-    console.log(err);
-  }
-}
 
 const useStyles = makeStyles({
   card: {
@@ -54,24 +37,29 @@ const useStyles = makeStyles({
 
 export default function ItemListContainer({ setCurrentItems }) {
   const classes = useStyles();
-  const [category, setCategory] = useState({});
 
   const [itemsList, setItems] = useState([]);
   const [showItemList, setShowItemList]= useState([])
+
+  const {getDataItems} = useContext(ItemContext)
+
   useEffect(() => {
-    GetDataItems().then((resp) => {
+    getDataItems().then((resp) => {
       setItems(resp)
       setShowItemList(resp)
+
     });
   }, []);
-  console.log(itemsList);
-  console.log(showItemList)
+  
   useEffect(() => {
     setItems(itemsList);
   }, []);
+
+  // console.log(itemsList);
+  console.log(showItemList)
   return (
     <div>
-      <NavBarCat itemsList={itemsList} setCategory={setCategory} setShowItemList={setShowItemList} />
+      <NavBarCat itemsList={itemsList}  setShowItemList={setShowItemList} />
       <Box
         fixed
         sx={{
@@ -89,9 +77,7 @@ export default function ItemListContainer({ setCurrentItems }) {
               return (
                 <Link
                   to={`/menu/${i.id}`}
-                  className={classes.linkCard}
-                  onClick={() => setCurrentItems(i) }
-                  
+                  className={classes.linkCard} 
                 >
                   <Card
                     sx={{ maxWidth: 300, minWidth: 300 }}
