@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 import NavBar from "./components/navBar/navBar";
-import ItemListContainer from "./components/itemListContainer/itemList";
+import ItemListContainer from "./components/itemList/itemList";
 import Home from "./components/home/myHome";
-import ItemDetail from "./components/itemListContainer/itemDetail";
+import ItemDetail from "./components/itemList/itemDetail";
 import ItemState from "./contexts/itemsState";
 
 import { StyledEngineProvider } from "@mui/material/styles";
@@ -33,7 +33,6 @@ function App() {
                 path="/category/:cat"
                 element={
                   <ItemListContainer
-                  // itemsList={items}
                   />
                 }
               />

@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import {Box, Toolbar, IconButton, Button, Typography} from "@mui/material/";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+
+import {Box, Toolbar, IconButton, Button, Typography, MenuItem, Badge, Menu, AppBar } from "@mui/material/";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";

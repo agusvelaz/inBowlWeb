@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# inBowl
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### inBowl es una tienda de comida desarrollada en React Js donde el usuario encontrara varias seccion para navegar como Home, Menu, Contacto etc. Tambien manejamos la funcionalidad de un carrito con los productos deseados.
+<br><br>
 
-## Available Scripts
 
-In the project directory, you can run:
+# Esta App está construido con: 💻
+<br>
 
-### `npm start`
+⚪ Create-React-App (React Js)
+⚪ 
+⚪ MUI
+⚪ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br><br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Instalación para poder usarlo 📋
+<br>
 
-### `npm test`
+### 1- Instalar las dependencias de React Js. 🔧
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+〰️〰️〰️
+npm i
+〰️〰️〰️
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2- Iniciar el servidor. 🚀
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+〰️〰️〰️
+npm start
+〰️〰️〰️
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3- Disfrutar del Sitio Web. ✔️
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Creación del E-commerce 🛠️
+## Components:
 
-## Learn More
+#### En la carpeta `components` vas a encontrar todos los componentes con los que se realizó el proyecto. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- * **ItemList:** Utiliza una funcion con una promesa para solicitar los datos correspondientes para renderizar los productos disponibles.
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **ItemDetail:** Utiliza la misma funcion que **ItemList:** para solicitar los datos para renderizar el producto seleccionado por el usuario, donde se muesta su descripcion, cantidad de stock,precio y material etc.
+<br>
 
-### Code Splitting
+* **Checkout:** Utilizan las funciones createOrder y getUserId de firebase( Services/firebase.js ) para crear la orden de los productos que compro el usuario y enviarla a la colección **orders** que está en firebase para asi poder generar el envio del producto. -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+## Context 📄
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### En la carpeta `context/CartContext.js` se encuentra toda la lógica con la que se desarrollaron los pedidos de data para los items y el carrito de compras con sus funciones para remover, agregar, vaciar productos del carrito.
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+# Autor ✒️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Agustin Velazquez - AlphaDevs - 2021.

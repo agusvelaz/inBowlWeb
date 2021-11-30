@@ -3,13 +3,24 @@
 }
 
 .home{
-  height: 99vh;
+  margin-top:20px;
+  height: 90vh;
   width: 100%;
-  background-image: url(../src/components/home/variant2.png);
+  background-image: url(../src/components/home/logo.svg);
   background-size: cover;
-   
+  align-items: center;
+  font-family: 'MyriadPro-Regular´', 'Myriad Pro';
 }
+.homeInfo{
+  background-image: url(../src/components/home/chef1.jpg);
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  height:600px;
+  width:3000px;
+ 
 
+}
 /* CARDS */
 .cardUl{
   display: flex;

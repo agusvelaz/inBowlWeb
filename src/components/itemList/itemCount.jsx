@@ -3,6 +3,7 @@ import {CardActions, Button} from "@mui/material";
 import { AddShoppingCart } from "@material-ui/icons";
 import { useState } from "react";
 import AlertStocking from "../alert/alertStocking"
+import AlertAddCart from "../alert/alertAddCart"
 
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,6 +20,7 @@ export default function ItemCount({ stock, name }) {
     const classes = useStyles();
     const [initial, setInitial] = useState(1);
     const [errorMessage, setErrorMessage] = useState("")
+    const [addCartMessage, setCartMessage] = useState("")
     console.log(errorMessage)
     
     
@@ -63,7 +65,9 @@ export default function ItemCount({ stock, name }) {
           endIcon={<AddShoppingCart />}
           onClick={() => {
             console.log(initial)
-            alert(`Add ${name} x${initial} to cart`);
+            setCartMessage("AddCart")
+            setInitial(1)
+            
           }}
         >
           Add to Cart
@@ -73,6 +77,11 @@ export default function ItemCount({ stock, name }) {
             setErrorMessage("")
           }, 10000)}/>
           
+        }
+        {addCartMessage &&
+        <AlertAddCart stock={stock} name={name} message={setTimeout(() => {
+          setCartMessage("")
+        }, 10000)}/>
         }
       </CardActions> 
     );

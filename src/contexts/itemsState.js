@@ -24,20 +24,10 @@ const ItemState = (props) => {
     }
   }
 
-  async function getDataItemDetail(id) {
-    try {
-      const dataItemsObj = await getData();
-      return dataItemsObj.dataItems;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   return (
     <ItemContext.Provider
       value={{
         getDataItems,
-        getDataItemDetail,
       }}
     >
       {props.children}

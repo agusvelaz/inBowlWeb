@@ -4,7 +4,7 @@ import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 
 
-const AlertStocking = ({ stock, name, message }) => {
+const AlertAddCart = ({ stock, name, message }) => {
   const [open, setOpen] = useState(true);
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -25,13 +25,13 @@ const AlertStocking = ({ stock, name, message }) => {
       <Alert
         variant="filled"
         onClose={handleClose}
-        severity="warning"
+        severity="success"
         sx={{ width: "100%"}}
       >
-        <AlertTitle>¡UPS!</AlertTitle>
-        No puedes agregar mas cantidad porque el producto "{name}" cuenta con solo {stock} unidades en stock.
+        <AlertTitle>¡Added to your cart!</AlertTitle>
+        Agregaste "{name}" x{stock} unidades a tu carrito .
       </Alert>
     </Snackbar>
   );
 };
-export default AlertStocking;
+export default AlertAddCart;

@@ -29,29 +29,19 @@ const useStyles = makeStyles({
 
 export default function ItemDetail() {
   const classes = useStyles();
-  let params = useParams();
-  console.log(params);
-  // let {id} = useParams();
+  let { id } = useParams();
+  // console.log(id);
 
   const { getDataItems } = useContext(ItemContext);
   const [itemsList, setItems] = useState([]);
-  const [showItemFilter, setShowItemFilter] = useState([]);
+  const [showItemDetail, setShowItemDetail] = useState([]);
 
   useEffect(() => {
     getDataItems().then((resp) => {
-      setItems(resp);
+      setShowItemDetail(resp.find((prod) => prod.id == parseInt(id)));
+      // console.log(showItemDetail)
     });
-
-  }, []);
-
-  // function itemFilter() {
-  //   itemsList.map((item) => {
-  //     if (item.id == params.id) {
-  //       setShowItemFilter(item);
-  //       console.log(item);
-  //     }
-  //   });
-  // }
+  }, [id]);
 
   return (
     <Box>
@@ -71,13 +61,7 @@ export default function ItemDetail() {
           👈Volver al menu
         </Typography>
       </Link>
-      {itemsList?.map((item) => {
-        if (item.id == params.id) {
-          setShowItemFilter(item);
-          console.log(item);
-        }
-      })}
-      {/* <Card
+      <Card
         sx={{
           marginTop: 0,
           marginBottom: 2,
@@ -89,7 +73,7 @@ export default function ItemDetail() {
         <CardMedia
           component="img"
           sx={{ width: 500 }}
-          image={currentItems.img}
+          image={showItemDetail.img}
           alt="item img"
         />
         <Box
@@ -102,13 +86,13 @@ export default function ItemDetail() {
         >
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h4" color="#ffffff">
-              {currentItems.name}
+              {showItemDetail.name}
             </Typography>
             <Typography variant="h5" color="#ffffff" component="div">
-              ${currentItems.price}
+              ${showItemDetail.price}
             </Typography>
           </CardContent>
-          <Typography>{currentItems.info}</Typography>
+          <Typography>{showItemDetail.info}</Typography>
           <Box
             sx={{
               display: "flex",
@@ -116,10 +100,13 @@ export default function ItemDetail() {
               justifyContent: "center",
             }}
           >
-            <ItemCount stock={currentItems.stock} name={currentItems.name} />
+            <ItemCount
+              stock={showItemDetail.stock}
+              name={showItemDetail.name}
+            />
           </Box>
         </Box>
-      </Card> */}
+      </Card>
     </Box>
   );
 }

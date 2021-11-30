@@ -72,6 +72,7 @@ export default function ItemListContainer({ setCurrentItems }) {
         </Typography>
         <div className="cardUl">
             {showItemList?.map((i) => {
+              
               console.log(i);
 
               return (
