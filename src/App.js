@@ -7,6 +7,8 @@ import ItemListContainer from "./components/itemList/itemList";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemList/itemDetail";
 import ItemState from "./contexts/itemsState";
+import CartProvider from "./contexts/cartProvider";
+import CartList from "./components/cart/cartList"
 
 import { StyledEngineProvider } from "@mui/material/styles";
 // da prioridad a mis estilos
@@ -18,6 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <ItemState>
+      <CartProvider>
         <div className="App">
           <StyledEngineProvider injectFirst>
             <NavBar />
@@ -29,20 +32,24 @@ function App() {
                   <ItemListContainer setCurrentItems={setCurrentItems} />
                 }
               />
+              <Route path="/category/:cat" element={<ItemListContainer />} />
               <Route
-                path="/category/:cat"
-                element={
-                  <ItemListContainer
-                  />
-                }
-              />
-              <Route path="/menu/:id" element={<ItemDetail currentItems={currentItems} />}
+                path="/menu/:id"
+                element={<ItemDetail currentItems={currentItems} />}
               />
 
               <Route path="/nosotros" element={<h1>Nosotros</h1>} />
+
+              <Route
+                path="/cart"
+                element={
+                  <CartList/>
+                }
+              />
             </Routes>
           </StyledEngineProvider>
         </div>
+      </CartProvider>
       </ItemState>
     </BrowserRouter>
   );

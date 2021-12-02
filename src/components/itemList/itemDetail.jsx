@@ -31,10 +31,9 @@ export default function ItemDetail() {
   const classes = useStyles();
   let { id } = useParams();
   // console.log(id);
-
-  const { getDataItems } = useContext(ItemContext);
-  const [itemsList, setItems] = useState([]);
   const [showItemDetail, setShowItemDetail] = useState([]);
+  //context
+  const { getDataItems } = useContext(ItemContext);
 
   useEffect(() => {
     getDataItems().then((resp) => {
@@ -53,9 +52,11 @@ export default function ItemDetail() {
           sx={{
             marginTop: 3,
             marginBottom: 1,
-            marginLeft: { sm: 20, xl: 35 },
-            marginRight: { sm: 20, xl: 35 },
+            marginLeft: "auto",
+            marginRight: "auto",
             textAlign: "initial",
+            maxWidth: 1200,
+            // margin:"auto"
           }}
         >
           👈Volver al menu
@@ -65,14 +66,16 @@ export default function ItemDetail() {
         sx={{
           marginTop: 0,
           marginBottom: 2,
-          marginLeft: { sm: 20, xl: 35 },
-          marginRight: { sm: 20, xl: 35 },
+          // marginLeft: { sm: 20, xl: 35 },
+          // marginRight: { sm: 20, xl: "auto" },
+          maxWidth: {xl:1200 ,lg:1100},
+          margin: "auto",
         }}
         className={classes.cardItem}
       >
         <CardMedia
           component="img"
-          sx={{ width: 500 }}
+          sx={{ width: {xl:700 ,lg:600} }}
           image={showItemDetail.img}
           alt="item img"
         />
@@ -82,17 +85,31 @@ export default function ItemDetail() {
             flexDirection: "column",
             marginLeft: "auto",
             marginRight: "auto",
+            justifyContent: "space-around",
           }}
         >
-          <CardContent sx={{ flex: "1 0 auto" }}>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              padding: 0,
+            }}
+          >
             <Typography component="div" variant="h4" color="#ffffff">
               {showItemDetail.name}
             </Typography>
-            <Typography variant="h5" color="#ffffff" component="div">
+            <Typography
+              variant="h4"
+              color="#ffffff"
+              component="div"
+              sx={{ marginTop: 5 }}
+            >
               ${showItemDetail.price}
             </Typography>
+            <Typography sx={{ marginTop: 5 }}>{showItemDetail.info}</Typography>
           </CardContent>
-          <Typography>{showItemDetail.info}</Typography>
+
           <Box
             sx={{
               display: "flex",
@@ -103,6 +120,7 @@ export default function ItemDetail() {
             <ItemCount
               stock={showItemDetail.stock}
               name={showItemDetail.name}
+              item={showItemDetail}
             />
           </Box>
         </Box>

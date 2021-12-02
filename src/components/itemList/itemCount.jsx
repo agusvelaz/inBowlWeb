@@ -5,6 +5,9 @@ import { useState } from "react";
 import AlertStocking from "../alert/alertStocking"
 import AlertAddCart from "../alert/alertAddCart"
 
+import CartContext from "../../contexts/cartContext";
+import { useContext } from "react";
+
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -16,61 +19,69 @@ const useStyles = makeStyles({
     backgroundColor: '#000',
   },
 });
-export default function ItemCount({ stock, name }) {
+export default function ItemCount({ stock, name, item }) {
     const classes = useStyles();
-    const [initial, setInitial] = useState(1);
+    const [quantity, setQuantity] = useState(1);
     const [errorMessage, setErrorMessage] = useState("")
-    const [addCartMessage, setCartMessage] = useState("")
-    console.log(errorMessage)
+    
+    //context
+    const { addProduct } = useContext(CartContext);
+    
     
     
     return (
       
-      <CardActions className="cardAction">
+      <CardActions className="cardAction" sx={{padding:0}}>
 
 
         <div className="stockActions">
+        <p>Cantidad: </p>
           <Button
             className={classes.buttonCart}
 
             sx={{ minWidth: 35 }}
             onClick={() => {
-              initial > 1 
-                ? setInitial(initial - 1) 
-                : setInitial(1);
+              quantity > 1 
+                ? setQuantity(quantity - 1) 
+                : setQuantity(1);
             }}
           >
             -
           </Button>
-          <p>{initial}</p>
+          <p>{quantity}</p>
           <Button
             className={classes.buttonCart}
             sx={{ minWidth: 35 }}
             onClick={() => {
-              initial < stock
-                ? setInitial(initial + 1)
+              quantity < stock
+                ? setQuantity(quantity + 1)
                 : setErrorMessage("error")
                 // alert(`*¡UPS!* - El producto ${name} cuenta con solo ${stock} unidades en stock`);
             }}
           >
             +
           </Button>
+          <p>({stock} disponibles)</p>
         </div>
-        <p>({stock} disponibles)</p>
+        
         <Button
           className="add  Cart"
-          sx={{ margin: 3 , backgroundColor: '#000'}}
+          sx={{ marginTop: 3 , backgroundColor: '#000', width: 400}}
           variant="contained"
           disableElevation
+          size="large"
           endIcon={<AddShoppingCart />}
           onClick={() => {
-            console.log(initial)
-            setCartMessage("AddCart")
-            setInitial(1)
+            console.log(quantity)
+            
+            addProduct(item, quantity)
+            
+            setQuantity(1)
+            
             
           }}
         >
-          Add to Cart
+          Agregar al carrito
         </Button>
         {errorMessage &&  
           <AlertStocking stock={stock} name={name} message={setTimeout(() => {
@@ -78,11 +89,11 @@ export default function ItemCount({ stock, name }) {
           }, 10000)}/>
           
         }
-        {addCartMessage &&
+        {/* {addCartMessage &&
         <AlertAddCart stock={stock} name={name} message={setTimeout(() => {
           setCartMessage("")
         }, 10000)}/>
-        }
+        } */}
       </CardActions> 
     );
 

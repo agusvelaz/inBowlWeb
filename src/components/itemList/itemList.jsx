@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ItemListContainer({ setCurrentItems }) {
+export default function ItemListContainer() {
   const classes = useStyles();
 
   const [itemsList, setItems] = useState([]);

@@ -2,14 +2,24 @@ import { Link } from "react-router-dom";
 
 import * as React from "react";
 
-import {Box, Toolbar, IconButton, Button, Typography, MenuItem, Badge, Menu, AppBar } from "@mui/material/";
+import {
+  Box,
+  Toolbar,
+  IconButton,
+  Button,
+  Typography,
+  MenuItem,
+  Badge,
+  Menu,
+  AppBar,
+} from "@mui/material/";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(themeConfig =>({
+const useStyles = makeStyles((themeConfig) => ({
   offset: themeConfig.mixins.toolbar,
   brandTitle: {
     color: "white",
@@ -20,9 +30,8 @@ const useStyles = makeStyles(themeConfig =>({
     textDecoration: "none",
   },
   menuPaper: {
-    backgroundColor: "#011013"
-  }
-  
+    backgroundColor: "#011013",
+  },
 }));
 
 export default function NavBar() {
@@ -90,30 +99,27 @@ export default function NavBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-      
-      
     >
-
-        <Link to="/" className={classes.linksRef}><MenuItem>Home</MenuItem> </Link>
-        <Link to="/menu" className={classes.linksRef}><MenuItem>Menu</MenuItem> </Link>
-        <Link to="/nosotros" className={classes.linksRef}><MenuItem>Nosotros</MenuItem> </Link>
- 
-    
+      <Link to="/" className={classes.linksRef}>
+        <MenuItem>Home</MenuItem>{" "}
+      </Link>
+      <Link to="/menu" className={classes.linksRef}>
+        <MenuItem>Menu</MenuItem>{" "}
+      </Link>
+      <Link to="/nosotros" className={classes.linksRef}>
+        <MenuItem>Nosotros</MenuItem>{" "}
+      </Link>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <div className={classes.offset}/>
-      <AppBar
-        position="fixed"
-        className="navBar"
-        color="primary"
-      >
-        <Toolbar>
+      <div className={classes.offset} />
+      <AppBar position="fixed" className="navBar" color="primary">
+        <Toolbar sx={{ width: { xl: 1500 }, margin: { xl: "auto" } }}>
           <Box sx={{ flexGrow: 1, textAlign: "left" }}>
             {/* BRAND ICON */}
-            
+
             <Typography
               variant="h4"
               noWrap
@@ -122,14 +128,13 @@ export default function NavBar() {
               className={classes.brandTitle}
             >
               <Link to="/" className={classes.brandTitle}>
-              inBowl
+                inBowl
               </Link>
               {/* 🔥 */}
             </Typography>
-           
           </Box>
 
-          <Box  sx={{ display: { xs:"none" , md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Link to="/" className={classes.linksRef}>
               <Button color="inherit"> Home</Button>
             </Link>
@@ -142,15 +147,17 @@ export default function NavBar() {
           </Box>
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 0 new items in cart"
-              color="inherit"
-            >
-              <Badge badgeContent={"0"} color="error">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
+            <Link to="/cart" className={classes.linksRef}>
+              <IconButton
+                size="large"
+                aria-label="show 0 new items in cart"
+                color="inherit"
+              >
+                <Badge badgeContent={"0"} color="error">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </Link>
 
             <IconButton
               size="large"
