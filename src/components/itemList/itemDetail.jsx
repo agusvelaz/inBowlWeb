@@ -75,7 +75,7 @@ export default function ItemDetail() {
       >
         <CardMedia
           component="img"
-          sx={{ width: {xl:700 ,lg:600} }}
+          sx={{ width: {xl:700 ,lg:550} }}
           image={showItemDetail.img}
           alt="item img"
         />
@@ -83,8 +83,7 @@ export default function ItemDetail() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            marginLeft: "auto",
-            marginRight: "auto",
+            margin: "50px",
             justifyContent: "space-around",
           }}
         >
@@ -107,7 +106,7 @@ export default function ItemDetail() {
             >
               ${showItemDetail.price}
             </Typography>
-            <Typography sx={{ marginTop: 5 }}>{showItemDetail.info}</Typography>
+            <Typography sx={{ marginTop: 5 , textAlign:"initial"}}>{showItemDetail.info}</Typography>
           </CardContent>
 
           <Box
