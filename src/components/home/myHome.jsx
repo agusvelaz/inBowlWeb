@@ -26,7 +26,6 @@ export default function Home() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Loading/>
       <CssBaseline />
       <Container className={classes.homeLogo}>
         <section className="home"></section>

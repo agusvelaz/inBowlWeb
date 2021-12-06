@@ -7,14 +7,14 @@ export default function Loading(){
         <div>
             <Typography
           component="div"
-          variant="h6"
+          variant="h1"
           color="#ffffff"
           sx={{
-            marginTop: 3,
+            marginTop: 5,
             marginBottom: 1,
             marginLeft: "auto",
             marginRight: "auto",
-            textAlign: "initial",
+            textAlign: "center",
             maxWidth: 1200,
             // margin:"auto"
           }}

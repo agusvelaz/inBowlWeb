@@ -2,6 +2,8 @@ import ItemList from "./itemList";
 import React, { useEffect, useState } from "react";
 
 import NavBarCat from "../navBar/navCat";
+import Loading from "../loading/loading";
+
 //firebase
 import { db } from "../../firebase/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -10,8 +12,10 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 const ItemListContainer = () => {
   const [itemsList, setItems] = useState([]);
   const [showItemList, setShowItemList] = useState([]);
+  const [Loader, setLoader] = useState(true);
 
   useEffect(() => {
+    setLoader(true)
     const itemsCollection = collection(db, "items");
 
     getDocs(itemsCollection).then((snapshot) => {
@@ -19,13 +23,20 @@ const ItemListContainer = () => {
       setItems(dataItems);
       setShowItemList(dataItems);
       // dataItems.map((doc) => console.log(doc));
-    });
+    }).catch((error) => {
+
+      console.log('Error al encontrar producto', error)
+
+    }).finally(() => {
+
+      setLoader(false)
+    })
   }, []);
 
   return (
     <>
       <NavBarCat itemsList={itemsList} setShowItemList={setShowItemList} />
-      <ItemList itemsList={itemsList} showItemList={showItemList} />
+      {Loader ? <Loading /> :<ItemList itemsList={itemsList} showItemList={showItemList} />}
     </>
   );
 };
