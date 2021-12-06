@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
-
 import ItemCount from "./itemCount";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@mui/material/Box";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-
-import ItemContext from "../../contexts/itemContext";
 import React, { useEffect, useState } from "react";
-import { useContext } from "react";
 import { useParams } from "react-router";
+//firebase
+import { db } from "../../firebase/firebase";
+import { doc, getDoc } from 'firebase/firestore';
+// firebase
+
 
 const useStyles = makeStyles({
   cardItem: {
@@ -32,18 +31,20 @@ export default function ItemDetail() {
   let { id } = useParams();
   // console.log(id);
   const [showItemDetail, setShowItemDetail] = useState([]);
-  //context
-  const { getDataItems } = useContext(ItemContext);
 
   useEffect(() => {
-    getDataItems().then((resp) => {
-      setShowItemDetail(resp.find((prod) => prod.id == parseInt(id)));
-      // console.log(showItemDetail)
+    const itemsCollection = doc(db, "items", id);
+
+    getDoc(itemsCollection).then((snapshot) => {
+      const dataItemsDetail = {id: snapshot.id, ...snapshot.data()}
+      setShowItemDetail(dataItemsDetail)
+      // dataItemsDetail.map((doc) => console.log(doc));
     });
   }, [id]);
 
   return (
     <Box>
+      
       <Link to="/menu" className={classes.linksRef}>
         <Typography
           component="div"

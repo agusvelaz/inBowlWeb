@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import {useContext} from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import {
   CardContent,
@@ -8,14 +7,8 @@ import {
   CardActionArea,
   Typography,
   Box,
-  Card
+  Card,
 } from "@mui/material";
-
-import ItemContext from '../../contexts/itemContext'
-import NavBarCat from "../navBar/navCat";
-
-
-
 
 const useStyles = makeStyles({
   card: {
@@ -35,31 +28,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ItemListContainer() {
+export default function ItemList({itemsList, showItemList}) {
   const classes = useStyles();
-
-  const [itemsList, setItems] = useState([]);
-  const [showItemList, setShowItemList]= useState([])
-
-  const {getDataItems} = useContext(ItemContext)
-
-  useEffect(() => {
-    getDataItems().then((resp) => {
-      setItems(resp)
-      setShowItemList(resp)
-
-    });
-  }, []);
-  
-  useEffect(() => {
-    setItems(itemsList);
-  }, []);
-
-  // console.log(itemsList);
-  console.log(showItemList)
+  console.log(showItemList);
   return (
     <div>
-      <NavBarCat itemsList={itemsList}  setShowItemList={setShowItemList} />
+      
       <Box
         fixed
         sx={{
@@ -70,46 +44,44 @@ export default function ItemListContainer() {
         <Typography variant="h3" color="white" sx={{ paddingTop: 2 }}>
           Menu
         </Typography>
+
         <div className="cardUl">
-            {showItemList?.map((i) => {
-              
-              console.log(i);
+          {showItemList?.map((i) => {
+            console.log(i);
 
-              return (
-                <Link
-                  to={`/menu/${i.id}`}
-                  className={classes.linkCard} 
+            return (
+              <Link to={`/menu/${i.id}`} className={classes.linkCard}>
+                <Card
+                  sx={{ maxWidth: 300, minWidth: 300 }}
+                  className={classes.card}
                 >
-                  <Card
-                    sx={{ maxWidth: 300, minWidth: 300 }}
-                    className={classes.card}
-                  >
-                    <CardActionArea>
-                      <CardContent className={classes.cardContent}>
-                        <CardMedia
-                          component="img"
-                          image={i.img}
-                          alt="green iguana"
-                        />
-                        <Typography
-                          variant="h5"
-                          color="#fffff"
-                          sx={{ marginTop: 2 }}
-                        >
-                          ${i.price}
-                        </Typography>
+                  <CardActionArea>
+                    <CardContent className={classes.cardContent}>
+                      <CardMedia
+                        component="img"
+                        image={i.img}
+                        alt="green iguana"
+                      />
+                      <Typography
+                        variant="h5"
+                        color="#fffff"
+                        sx={{ marginTop: 2 }}
+                      >
+                        ${i.price}
+                      </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div">
-                          {i.name}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Link>
-              );
-            })}
+                      <Typography gutterBottom variant="h6" component="div">
+                        {i.name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
       </Box>
+      
     </div>
   );
 }

@@ -22,6 +22,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setNewQuantity(quantity);
+    totalQuantity()
   }, []);
 
   return (

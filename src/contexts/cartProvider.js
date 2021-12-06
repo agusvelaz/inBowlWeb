@@ -30,13 +30,23 @@ const Cart = (props) => {
     }
   };
 
-  //  FUNCION CANTIDAD TOTAL
+  //  FUNCION CANTIDAD/UNIDADES TOTALES
   const totalQuantity = () => {
-    const count = 0;
-    const totalCount = (itemsInCart.reduce((count, prod) => count + prod.quantity, 0));
+    const totalCount=0
+    
+    // totalCount = (itemsInCart.reduce((count, prod) => count + prod.quantity, 0));
 
     setTotalQuantityInCart(totalCount);
     console.log(totalCount)
+};
+
+  //  FUNCION PRECIO TOTAL CARRITO
+
+
+  //  FUNCION LIMPIAR CARRITO
+  const clearCart = () => {
+    setItemsInCart([]);
+
 };
   console.log(itemsInCart);
   return (
@@ -47,7 +57,8 @@ const Cart = (props) => {
         deleteItemCart,
         itemsInCart,
         totalQuantity,
-        totalQuantityInCart
+        totalQuantityInCart,
+        clearCart
       }}
     >
       {props.children}

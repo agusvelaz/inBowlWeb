@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 import NavBar from "./components/navBar/navBar";
-import ItemListContainer from "./components/itemList/itemList";
+import ItemListContainer from "./components/itemList/itemListContainer";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemList/itemDetail";
 import ItemState from "./contexts/itemsState";

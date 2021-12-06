@@ -8,12 +8,12 @@ import { useContext, useEffect } from "react";
 export default function CartList() {
   // if cartproduct ? return cartproducts : return cartvacio
 
-  const { itemsInCart, totalQuantity, totalQuantityInCart } =
+  const { itemsInCart} =
     useContext(CartContext);
   console.log(itemsInCart);
 
   useEffect(() => {
-    console.log(itemsInCart);
+    console.log(itemsInCart.length);
   }, []);
   return (
     <Box
@@ -44,40 +44,9 @@ export default function CartList() {
         color="#ffffff"
         sx={{ maxWidth: 1100, marginLeft: "auto", marginRight: "auto" }}
       />
-      <ItemInCart />
-      {/* {itemsInCartCount ?<CartEmpty /> : <h1>soy yo</h1> } */}
-      <Box
-        display="flex"
-        margin="auto"
-        sx={{
-          justifyContent: "center",
-          flexDirection: "row",
-          alignContent: "center",
-          alignItems: "center",
-          marginTop: 3,
-        }}
-      >
-        <Typography component="div" variant="h4" color="#ffffff">
-          Total :
-        </Typography>
-        <Typography component="div" variant="h4" color="#ffffff">
-          {totalQuantityInCart} productos
-        </Typography>
-        <Button
-          className="add  Cart"
-          sx={{ backgroundColor: "#000" }}
-          variant="contained"
-          disableElevation
-          // onClick={() => {
-          //   deleteItemCart(id);
-          // }}
-        >
-          Limpiar Carrito
-        </Button>
-        <Typography component="div" variant="h4" color="#ffffff">
-          $total
-        </Typography>
-      </Box>
+      
+      {(itemsInCart.length == 0) ? <CartEmpty /> : <ItemInCart />}
+     
     </Box>
   );
 }

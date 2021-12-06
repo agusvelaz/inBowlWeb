@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
 import { Container, Box, Typography, MenuItem } from "@mui/material";
+import Loading from "../loading/loading";
 
 
 const useStyles = makeStyles(themeConfig =>({
@@ -25,6 +26,7 @@ export default function Home() {
   const classes = useStyles();
   return (
     <React.Fragment>
+      <Loading/>
       <CssBaseline />
       <Container className={classes.homeLogo}>
         <section className="home"></section>

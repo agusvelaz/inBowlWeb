@@ -1,12 +1,10 @@
-
-import { Box, Typography,Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
-
 export default function CartEmpty() {
-    return (<>
-        <Typography
+  return (
+    <Box sx={{ paddingBottom: 3 }}>
+      <Typography
         component="div"
         variant="h4"
         color="#ffffff"
@@ -15,11 +13,9 @@ export default function CartEmpty() {
           paddingTop: 5,
           marginBottom: 1,
           textAlign: "center",
-          
-          // margin:"auto"
         }}
       >
-        Tu carrito está vacío :(
+        Tu carrito está vacío
       </Typography>
       <Typography
         component="div"
@@ -29,14 +25,13 @@ export default function CartEmpty() {
           marginTop: 1,
           marginBottom: 1,
           textAlign: "center",
-          
-          // margin:"auto"
         }}
       >
-        ¿No sabés qué comprar? <Link to="/menu" className="linksRef">
-              <Button color="inherit"> Visita nuestro Menu </Button>
-            </Link>
+        ¿No sabés qué comprar?{" "}
+        <Link to="/menu" className="linksRef">
+          <Button color="inherit"> Visita nuestro Menu </Button>
+        </Link>
       </Typography>
-     </> 
-    )
+    </Box>
+  );
 }
