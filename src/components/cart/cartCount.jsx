@@ -16,13 +16,15 @@ const useStyles = makeStyles({
   },
 });
 export default function CartCount({ stock, name, quantity, id, price }) {
-  const { deleteItemCart, totalQuantity, totalQuantityInCart} = useContext(CartContext);
+  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalQuantityInCart } =
+    useContext(CartContext);
   const classes = useStyles();
   const [newQuantity, setNewQuantity] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setNewQuantity(quantity);
-    totalQuantity()
+    totalQuantity();
+    console.log("actualizo");
   }, []);
 
   return (
@@ -36,7 +38,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
       <CardActions
         sx={{
           padding: 0,
-          paddingRight:5,
+          paddingRight: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -46,27 +48,37 @@ export default function CartCount({ stock, name, quantity, id, price }) {
           display="flex"
           sx={{ alignItems: "center", flexDirection: "column" }}
         >
-          <Box display="flex"  function = {totalQuantity()} sx={{ alignItems: "center" } }>
+          <Box
+            display="flex"
+            function={totalQuantity()}
+            sx={{ alignItems: "center" }}
+          >
             <Button
               className={classes.buttonCart}
-
               onClick={() => {
-                newQuantity > 1
-                  ? setNewQuantity(newQuantity - 1)
-                  : setNewQuantity(1);
-                
+                if (newQuantity > 1) {
+                  setNewQuantity(newQuantity - 1)
+                  setNewQuantityItem(id, newQuantity)
+                  totalQuantity()
+                } else {
+                  setNewQuantity(1);
+                }
               }}
             >
               -
             </Button>
-            <Typography margin={1}>{newQuantity}</Typography>
+            <Typography margin={1} >{newQuantity}</Typography>
             <Button
               className={classes.buttonCart}
               onClick={() => {
-                newQuantity < stock
-                  ? setNewQuantity(newQuantity + 1)
-                  : setErrorMessage("error");
+                if (newQuantity < stock){
+                  setNewQuantity(newQuantity + 1)
+                  setNewQuantityItem(id, newQuantity)
+                  totalQuantity()
 
+                }else{
+                  setErrorMessage("error");
+                }
               }}
             >
               +
@@ -84,7 +96,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
           size="large"
           onClick={() => {
             deleteItemCart(id);
-            totalQuantity()
+            totalQuantity();
           }}
         >
           Eliminar

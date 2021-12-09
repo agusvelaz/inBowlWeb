@@ -29,15 +29,19 @@ const Cart = (props) => {
       setItemsInCart(newCart);
     }
   };
+  //  FUNCION ACTUALIZAR CANTIDAD 
+  const setNewQuantityItem = (idItem, quantity) => {
+    const element = itemsInCart.find(item => item.id === idItem);
+    element.quantity = quantity;
+    console.log(itemsInCart)
+
+  }
 
   //  FUNCION CANTIDAD/UNIDADES TOTALES
   const totalQuantity = () => {
-    const totalCount=0
-    
-    // totalCount = (itemsInCart.reduce((count, prod) => count + prod.quantity, 0));
-
-    setTotalQuantityInCart(totalCount);
-    console.log(totalCount)
+    const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
+   
+    setTotalQuantityInCart(itemsInCartTotal)
 };
 
   //  FUNCION PRECIO TOTAL CARRITO
@@ -58,7 +62,8 @@ const Cart = (props) => {
         itemsInCart,
         totalQuantity,
         totalQuantityInCart,
-        clearCart
+        clearCart,
+        setNewQuantityItem
       }}
     >
       {props.children}
