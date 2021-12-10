@@ -23,7 +23,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setNewQuantity(quantity);
-    totalCart()
+    totalQuantity()
     console.log("actualizo");
   }, []);
 
@@ -50,7 +50,6 @@ export default function CartCount({ stock, name, quantity, id, price }) {
         >
           <Box
             display="flex"
-            function={totalQuantity()}
             sx={{ alignItems: "center" }}
           >
             <Button

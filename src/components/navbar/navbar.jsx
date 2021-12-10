@@ -42,7 +42,7 @@ export default function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const {totalQuantity, totalQuantityInCart} = useContext(CartContext);
+  const {totalQuantity } = useContext(CartContext);
   useEffect(() => {
     totalQuantity()
   }, []);
@@ -137,7 +137,7 @@ export default function NavBar() {
                 aria-label="show 0 new items in cart"
                 color="inherit"
               >
-                <Badge badgeContent={totalQuantityInCart} color="error">
+                <Badge badgeContent={totalQuantity()} color="error">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>

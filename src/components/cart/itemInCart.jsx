@@ -4,11 +4,11 @@ import CartContext from "../../contexts/cartContext";
 import CartCount from "./cartCount";
 
 export default function ItemInCart() {
-  const { itemsInCart, clearCart,totalQuantityInCart, totalCartPrice } = useContext(CartContext);
+  const { itemsInCart, clearCart,totalQuantityInCart, totalCartPrice, totalQuantity} = useContext(CartContext);
   //   const [itemsInCartShow, setItemsInCartShow] = useState([])
 
     useEffect(() => {
-      
+      totalQuantity()
     }, []);
   console.log(itemsInCart);
 
@@ -84,7 +84,7 @@ export default function ItemInCart() {
           Total :
         </Typography>
         <Typography component="div" variant="h4" color="#ffffff">
-          {totalQuantityInCart} productos
+          {totalQuantity()} productos
         </Typography>
         <Button
           className="add  Cart"

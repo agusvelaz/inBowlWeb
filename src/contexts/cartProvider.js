@@ -39,9 +39,15 @@ const Cart = (props) => {
 
   //  FUNCION CANTIDAD/UNIDADES TOTALES
   const totalQuantity = () => {
-    const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
+    // const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
    
-    setTotalQuantityInCart(itemsInCartTotal)
+    // setTotalQuantityInCart(itemsInCartTotal)
+    let itemsInCartTotal = 0;
+    itemsInCart.map(item =>{
+      itemsInCartTotal = itemsInCartTotal + item.quantity;
+
+    }  )
+    return itemsInCartTotal;
 
     
 };
