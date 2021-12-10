@@ -6,8 +6,6 @@ import CartContext from "../../contexts/cartContext";
 import { useContext, useEffect } from "react";
 
 export default function CartList() {
-  // if cartproduct ? return cartproducts : return cartvacio
-
   const { itemsInCart} =
     useContext(CartContext);
   console.log(itemsInCart);
@@ -18,7 +16,7 @@ export default function CartList() {
   return (
     <Box
       sx={{
-        backgroundColor: "#011013",
+        backgroundColor: "#0a0a0a",
         maxWidth: 1200,
         marginLeft: "auto",
         marginRight: "auto",

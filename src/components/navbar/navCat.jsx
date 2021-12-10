@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((themeConfig) => ({
   offset: themeConfig.mixins.toolbar,
   navBarCat: {
-    backgroundColor: "#121212",
+    backgroundColor: "#8d582ee6",
     padding: 0,
   },
   navTool: {
@@ -52,7 +52,7 @@ export default function NavBarCat({ itemsList,  setShowItemList}) {
         position="static"
         className={classes.navBarCat}
         position="fixed"
-        sx={{ marginTop: 8, height: 40 }}
+        sx={{ marginTop: {xs:6, sm:8}, height: 40 }}
       >
         <Box sx={{ flexGrow: 1 }} />
         <div className={classes.navTool}>

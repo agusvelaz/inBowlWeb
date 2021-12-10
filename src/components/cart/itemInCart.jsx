@@ -4,7 +4,7 @@ import CartContext from "../../contexts/cartContext";
 import CartCount from "./cartCount";
 
 export default function ItemInCart() {
-  const { itemsInCart, clearCart, setTotalQuantityInCart,totalQuantityInCart } = useContext(CartContext);
+  const { itemsInCart, clearCart,totalQuantityInCart, totalCartPrice } = useContext(CartContext);
   //   const [itemsInCartShow, setItemsInCartShow] = useState([])
 
     useEffect(() => {
@@ -98,7 +98,7 @@ export default function ItemInCart() {
           Limpiar Carrito
         </Button>
         <Typography component="div" variant="h4" color="#ffffff">
-          $total
+          ${totalCartPrice}
         </Typography>
       </Box>
       <Box sx={{ paddingBottom:3,}}>

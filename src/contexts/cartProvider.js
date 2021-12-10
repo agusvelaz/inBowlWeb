@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 const Cart = (props) => {
   const [itemsInCart, setItemsInCart] = useState([]);
   const [totalQuantityInCart, setTotalQuantityInCart] = useState()
+  const [totalCartPrice, setTotalCartPrice] = useState()
 
   console.log(itemsInCart);
   //  FUNCION AGREGA AL CARRITO
@@ -34,7 +35,6 @@ const Cart = (props) => {
     const element = itemsInCart.find(item => item.id === idItem);
     element.quantity = quantity;
     console.log(itemsInCart)
-
   }
 
   //  FUNCION CANTIDAD/UNIDADES TOTALES
@@ -42,9 +42,19 @@ const Cart = (props) => {
     const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
    
     setTotalQuantityInCart(itemsInCartTotal)
+
+    
 };
 
   //  FUNCION PRECIO TOTAL CARRITO
+
+
+  const totalCart = () => {
+    const total =itemsInCart.reduce((suma, product) => suma + (product.quantity * product.price), 0) 
+    console.log(total)
+   
+    setTotalCartPrice(total)
+};
 
 
   //  FUNCION LIMPIAR CARRITO
@@ -63,7 +73,9 @@ const Cart = (props) => {
         totalQuantity,
         totalQuantityInCart,
         clearCart,
-        setNewQuantityItem
+        setNewQuantityItem,
+        totalCart,
+        totalCartPrice
       }}
     >
       {props.children}

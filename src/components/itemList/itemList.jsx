@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
   Card,
+  Divider,
 } from "@mui/material";
 
 const useStyles = makeStyles({
@@ -17,8 +18,12 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     transition: "all 0.3s ease",
-    backgroundColor: "#011013",
-    color: "#ffffff",
+    backgroundColor: "#000000",
+    color: "#9f9f9fcc",
+    "&:hover":{
+      color:"#7d6644",
+      backgroundColor: "#0a0a0a"
+    }
   },
   cardContent: {
     padding: 0,
@@ -41,9 +46,14 @@ export default function ItemList({itemsList, showItemList}) {
           paddingRight: { xs: 0, sm: 20, xl: 35 },
         }}
       >
-        <Typography variant="h3" color="white" sx={{ paddingTop: 2 }}>
+        <Typography variant="h3" color="#ffffff" sx={{ paddingTop: 2 }}>
           Menu
         </Typography>
+        <Divider
+        variant="middle"
+        color="#7d6644"
+        sx={{ maxWidth: {xs:300, sm:1300}, marginLeft: "auto", marginRight: "auto", marginTop: 2, marginBottom: 2}}
+      />
 
         <div className="cardUl">
           {showItemList?.map((i) => {

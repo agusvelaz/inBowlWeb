@@ -16,14 +16,14 @@ const useStyles = makeStyles({
   },
 });
 export default function CartCount({ stock, name, quantity, id, price }) {
-  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalQuantityInCart } =
+  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalCart } =
     useContext(CartContext);
   const classes = useStyles();
   const [newQuantity, setNewQuantity] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setNewQuantity(quantity);
-    totalQuantity();
+    totalCart()
     console.log("actualizo");
   }, []);
 
@@ -60,6 +60,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
                   setNewQuantity(newQuantity - 1)
                   setNewQuantityItem(id, newQuantity)
                   totalQuantity()
+                  totalCart()
                 } else {
                   setNewQuantity(1);
                 }
@@ -75,6 +76,7 @@ export default function CartCount({ stock, name, quantity, id, price }) {
                   setNewQuantity(newQuantity + 1)
                   setNewQuantityItem(id, newQuantity)
                   totalQuantity()
+                  totalCart()
 
                 }else{
                   setErrorMessage("error");

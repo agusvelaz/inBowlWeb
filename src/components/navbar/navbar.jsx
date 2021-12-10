@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import * as React from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import {
   Box,
@@ -18,16 +18,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { makeStyles } from "@material-ui/core/styles";
+import CartContext from "../../contexts/cartContext";
 
 const useStyles = makeStyles((themeConfig) => ({
   offset: themeConfig.mixins.toolbar,
   brandTitle: {
-    color: "white",
+    color: "#7d6644",
     textDecoration: "none",
   },
   linksRef: {
-    color: "white",
+    color: "#9f9f9fcc",
     textDecoration: "none",
+    "&:hover":{
+      color:"#7d6644"
+    }
   },
   menuPaper: {
     backgroundColor: "#011013",
@@ -38,6 +42,11 @@ export default function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const {totalQuantity, totalQuantityInCart} = useContext(CartContext);
+  useEffect(() => {
+    totalQuantity()
+  }, []);
+ 
 
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -103,14 +112,14 @@ export default function NavBar() {
               className={classes.brandTitle}
             >
               <Link to="/" className={classes.brandTitle}>
-                inBowl
+                InBowl
               </Link>
               {/* 🔥 */}
             </Typography>
           </Box>
 
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Link to="/" className={classes.linksRef}>
+            <Link to="/" className={classes.linksRef} >
               <Button color="inherit"> Home</Button>
             </Link>
             <Link to="/menu" className={classes.linksRef}>
@@ -128,7 +137,7 @@ export default function NavBar() {
                 aria-label="show 0 new items in cart"
                 color="inherit"
               >
-                <Badge badgeContent={"0"} color="error">
+                <Badge badgeContent={totalQuantityInCart} color="error">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>

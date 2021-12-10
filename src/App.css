@@ -2,11 +2,10 @@
   text-align: center;
 }
 
-.home{
+/* .home{
   margin-top:20px;
   height: 90vh;
-  width: 100%;
-  background-image: url(../src/components/home/logo.svg);
+  background-image: url(../src/components/home/homeImg3.png);
   background-size: cover;
   align-items: center;
   font-family: 'MyriadPro-Regular´', 'Myriad Pro';
@@ -21,7 +20,7 @@
   /* max-width: ; */
  
 
-}
+/* } */ 
 /* CARDS */
 .cardUl{
   display: flex;
@@ -35,7 +34,7 @@
 .stockActions{
   display: flex;
   flex-direction: row;
-  color: #ffff;
+  color:#504e4ecc;
 }
 .cardAction{
   display: flex;

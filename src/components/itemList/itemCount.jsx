@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   buttonCart:{
     color: "#ffffff",
     margin: "10px",
-    backgroundColor: '#000',
+    backgroundColor: '#8d582ee6',
   },
 });
 export default function ItemCount({ stock, name, item }) {
@@ -66,7 +66,7 @@ export default function ItemCount({ stock, name, item }) {
         
         <Button
           className="add  Cart"
-          sx={{ marginTop: 3 , backgroundColor: '#000', width: 400}}
+          sx={{ marginTop: 3 , backgroundColor: '#8d582ee6', width: 400}}
           variant="contained"
           disableElevation
           size="large"

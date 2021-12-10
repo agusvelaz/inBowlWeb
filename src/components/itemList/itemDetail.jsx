@@ -6,9 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import Loading from "../loading/loading";
+import CartContext from "../../contexts/cartContext";
 
 //firebase
 import { db } from "../../firebase/firebase";
@@ -17,7 +18,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 const useStyles = makeStyles({
   cardItem: {
-    backgroundColor: "#011013",
+    backgroundColor: "#0a0a0a",
     color: "#ffffff",
     display: "flex",
   },
@@ -33,8 +34,10 @@ export default function ItemDetail() {
   const [Loader, setLoader] = useState(true);
   // console.log(id);
   const [showItemDetail, setShowItemDetail] = useState([]);
+  const {totalQuantity} = useContext(CartContext);
 
   useEffect(() => {
+    totalQuantity()
     setLoader(true);
     const itemsCollection = doc(db, "items", id);
 
@@ -62,7 +65,7 @@ export default function ItemDetail() {
             <Typography
               component="div"
               variant="h6"
-              color="#ffffff"
+              color="#504e4ecc"
               sx={{
                 marginTop: 3,
                 marginBottom: 1,
@@ -73,7 +76,7 @@ export default function ItemDetail() {
                 // margin:"auto"
               }}
             >
-              👈Volver al menu
+              {"< "}Volver al menu
             </Typography>
           </Link>
           <Card
@@ -109,8 +112,8 @@ export default function ItemDetail() {
                   padding: 0,
                 }}
               >
-                <Typography component="div" variant="h4" color="#ffffff">
-                  {showItemDetail.name}
+                <Typography component="div" variant="h4" color="#ffffff" sx={{textAlign: "start"}}>
+                  {showItemDetail.name.toUpperCase()}
                 </Typography>
                 <Typography
                   variant="h4"
