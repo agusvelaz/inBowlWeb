@@ -25,7 +25,8 @@ export default function ItemCount({ stock, name, item }) {
     const [errorMessage, setErrorMessage] = useState("")
     
     //context
-    const { addProduct } = useContext(CartContext);
+    const { addProduct, itemsInCartTotal } = useContext(CartContext);
+    console.log(itemsInCartTotal)
     
     
     
@@ -72,13 +73,8 @@ export default function ItemCount({ stock, name, item }) {
           size="large"
           endIcon={<AddShoppingCart />}
           onClick={() => {
-            console.log(quantity)
-            
             addProduct(item, quantity)
-            
             setQuantity(1)
-            
-            
           }}
         >
           Agregar al carrito

@@ -3,13 +3,20 @@ import { Box, Typography, Button, CardMedia } from "@mui/material";
 import CartContext from "../../contexts/cartContext";
 import CartCount from "./cartCount";
 
-export default function ItemInCart() {
-  const { itemsInCart, clearCart,totalQuantityInCart, totalCartPrice, totalQuantity} = useContext(CartContext);
-  //   const [itemsInCartShow, setItemsInCartShow] = useState([])
+import { Link } from "react-router-dom";
 
-    useEffect(() => {
-      totalQuantity()
-    }, []);
+export default function ItemInCart() {
+  const {
+    setItemsInCart,
+    itemsInCart,
+    clearCart,
+    totalCartPrice,
+    totalQuantity,
+  } = useContext(CartContext);
+
+  useEffect(() => {
+    totalQuantity();
+  }, []);
   console.log(itemsInCart);
 
   return (
@@ -28,7 +35,7 @@ export default function ItemInCart() {
                 borderBottom: 1,
                 display: "flex",
                 justifyContent: "space-around",
-                borderColor: "grey.500",
+                borderColor: "#7d6644",
               }}
             >
               <Box>
@@ -72,23 +79,54 @@ export default function ItemInCart() {
         display="flex"
         margin="auto"
         sx={{
-          justifyContent: "center",
+          justifyContent: "end",
           flexDirection: "row",
           alignContent: "center",
           alignItems: "center",
           marginTop: 3,
-          paddingBottom:5,
+          paddingBottom: 2,
+          marginRight: 8,
         }}
       >
-        <Typography component="div" variant="h4" color="#ffffff">
-          Total :
+        <Typography
+          component="div"
+          variant="h4"
+          color="#ffffff"
+          sx={{ margin: 1 }}
+        >
+          Total:
         </Typography>
-        <Typography component="div" variant="h4" color="#ffffff">
-          {totalQuantity()} productos
+        <Typography
+          component="div"
+          variant="h6"
+          color="#ffffff"
+          sx={{ margin: 1 }}
+        >
+          {`(${totalQuantity()} productos)`}
         </Typography>
+
+        <Typography
+          component="div"
+          variant="h4"
+          color="#ffffff"
+          sx={{ margin: 1 }}
+        >
+          ${totalCartPrice}
+        </Typography>
+      </Box>
+
+      <Box
+        sx={{
+          paddingBottom: 3,
+          marginRight: 8,
+          flexDirection: "column",
+          display: "flex",
+          alignItems: "flex-end",
+        }}
+      >
         <Button
           className="add  Cart"
-          sx={{ backgroundColor: "#000" }}
+          sx={{ backgroundColor: "#8d582ee6", width: 200 }}
           variant="contained"
           disableElevation
           onClick={() => {
@@ -97,17 +135,20 @@ export default function ItemInCart() {
         >
           Limpiar Carrito
         </Button>
-        <Typography component="div" variant="h4" color="#ffffff">
-          ${totalCartPrice}
-        </Typography>
+        <Link to="/cart/buyerData"  >
+          <Button
+            className="add  Cart"
+            sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
+            variant="contained"
+            onClick={() => {
+              setItemsInCart(itemsInCart);
+            }}
+            
+          >
+            CONTINUAR COMPRA
+          </Button>
+        </Link>
       </Box>
-      <Box sx={{ paddingBottom:3,}}>
-      <Button
-          className="add  Cart"
-          sx={{ backgroundColor: "#000"}}
-          variant="contained"
-        >FINALIZAR COMPRA</Button>
-        </Box>
     </>
   );
 }

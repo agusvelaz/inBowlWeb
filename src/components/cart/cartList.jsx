@@ -39,7 +39,7 @@ export default function CartList() {
       </Typography>
       <Divider
         variant="middle"
-        color="#ffffff"
+        color="#7d6644"
         sx={{ maxWidth: 1100, marginLeft: "auto", marginRight: "auto" }}
       />
       

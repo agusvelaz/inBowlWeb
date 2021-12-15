@@ -11,21 +11,27 @@ const useStyles = makeStyles({
   buttonCart: {
     color: "#ffffff",
     margin: "10px",
-    backgroundColor: "#000",
+    backgroundColor: "#8d582ee6",
     minWidth: 35,
+    height:30
   },
 });
 export default function CartCount({ stock, name, quantity, id, price }) {
-  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalCart } =
+  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalCart, itemsInCart } =
     useContext(CartContext);
   const classes = useStyles();
   const [newQuantity, setNewQuantity] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
-    setNewQuantity(quantity);
+    setNewQuantity(quantity)
+  }, [])
+  useEffect(() => {
+    setNewQuantityItem(id, newQuantity)
     totalQuantity()
-    console.log("actualizo");
-  }, []);
+    totalCart()
+  }, [newQuantity])
+ 
+  
 
   return (
     <Box
@@ -50,16 +56,14 @@ export default function CartCount({ stock, name, quantity, id, price }) {
         >
           <Box
             display="flex"
-            sx={{ alignItems: "center" }}
+            sx={{ alignItems: "center"  }}
           >
             <Button
               className={classes.buttonCart}
               onClick={() => {
                 if (newQuantity > 1) {
-                  setNewQuantity(newQuantity - 1)
-                  setNewQuantityItem(id, newQuantity)
+                  setNewQuantity((newQuantity) => newQuantity - 1)
                   totalQuantity()
-                  totalCart()
                 } else {
                   setNewQuantity(1);
                 }
@@ -72,10 +76,8 @@ export default function CartCount({ stock, name, quantity, id, price }) {
               className={classes.buttonCart}
               onClick={() => {
                 if (newQuantity < stock){
-                  setNewQuantity(newQuantity + 1)
-                  setNewQuantityItem(id, newQuantity)
+                  setNewQuantity((newQuantity) => newQuantity + 1)
                   totalQuantity()
-                  totalCart()
 
                 }else{
                   setErrorMessage("error");
@@ -90,10 +92,10 @@ export default function CartCount({ stock, name, quantity, id, price }) {
 
         <Button
           className="add  Cart"
-          sx={{ marginTop: 1, backgroundColor: "#000" }}
+          sx={{ marginTop: 1, backgroundColor: '#8d582ee6', minWidth: 30,
+          height:35 }}
           variant="contained"
           disableElevation
-          // endIcon={<DeleteIcon />}
           size="large"
           onClick={() => {
             deleteItemCart(id);

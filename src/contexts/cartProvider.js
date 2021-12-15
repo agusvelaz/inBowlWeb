@@ -7,6 +7,8 @@ const Cart = (props) => {
   const [totalQuantityInCart, setTotalQuantityInCart] = useState()
   const [totalCartPrice, setTotalCartPrice] = useState()
 
+  const [newOrder, setNewOrder] = useState()
+
   console.log(itemsInCart);
   //  FUNCION AGREGA AL CARRITO
   const addProduct = (item, quantity) => {
@@ -39,14 +41,10 @@ const Cart = (props) => {
 
   //  FUNCION CANTIDAD/UNIDADES TOTALES
   const totalQuantity = () => {
-    // const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
+    const itemsInCartTotal =itemsInCart.reduce((suma, product) => suma + product.quantity, 0) 
    
-    // setTotalQuantityInCart(itemsInCartTotal)
-    let itemsInCartTotal = 0;
-    itemsInCart.map(item =>{
-      itemsInCartTotal = itemsInCartTotal + item.quantity;
-
-    }  )
+    setTotalQuantityInCart(itemsInCartTotal)
+    
     return itemsInCartTotal;
 
     
@@ -60,6 +58,7 @@ const Cart = (props) => {
     console.log(total)
    
     setTotalCartPrice(total)
+    return total;
 };
 
 
@@ -81,7 +80,11 @@ const Cart = (props) => {
         clearCart,
         setNewQuantityItem,
         totalCart,
-        totalCartPrice
+        totalCartPrice,
+        newOrder,
+        setNewOrder
+
+
       }}
     >
       {props.children}
