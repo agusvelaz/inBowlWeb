@@ -57,6 +57,11 @@ npm start
 
 <br>
 
+## Vista del proyecto:
+
+Home
+![home](https://github.com/MarceloLuisMoreno/Refugio-Moreno/blob/main/src/assets/avanceProyecto/home.png?raw=true)
+
 
 # Autor ✒️
 

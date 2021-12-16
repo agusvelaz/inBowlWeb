@@ -16,10 +16,13 @@ export default function CartList() {
   return (
     <Box
       sx={{
+        marginTop: {xl:10},
         backgroundColor: "#0a0a0a",
         maxWidth: 1200,
         marginLeft: "auto",
         marginRight: "auto",
+        marginBottom: {xl:12},
+        
       }}
     >
       <Typography

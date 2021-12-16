@@ -64,7 +64,7 @@ export default function ItemDetail() {
       ) : (
         <Box>
           <Link to="/menu" className={classes.linksRef}>
-            <Typography
+            {/* <Typography
               component="div"
               variant="h6"
               color="#504e4ecc"
@@ -79,22 +79,23 @@ export default function ItemDetail() {
               }}
             >
               {"< "}Volver al menu
-            </Typography>
+            </Typography> */}
           </Link>
           <Card
             sx={{
               maxWidth: { xl: 1200, lg: 1100 },
-              height:{sm:510, xs:"auto"},
+              height:{xl:600, sm:525, xs:"auto"},
               margin: "auto",
               flexDirection: {xs:"column", sm:"row"},
               alignItems: "center",
+              marginTop:2,
               marginBottom:2
             }}
             className={classes.cardItem}
           >
             <CardMedia
               component="img"
-              sx={{ width: {  xs:450, md:450, lg: 550 ,xl: 700}, }}
+              sx={{ width: {  xs:450, md:450, lg: 550 ,xl: 650}, }}
               image={showItemDetail.img}
               alt="item img"
             />

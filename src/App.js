@@ -14,6 +14,8 @@ import CartList from "./components/cart/cartList"
 import BuyerData from "./components/cart/buyerData"
 import Checkout from "./components/cart/checkout"
 
+import Footer from "./components/footer/footer"
+
 import { StyledEngineProvider } from "@mui/material/styles";
 // da prioridad a mis estilos
 
@@ -57,6 +59,7 @@ function App() {
               <Route path="/cart/buyerData" element={<BuyerData/>} />
               <Route path="/cart/checkOut" element={<Checkout/>} />
             </Routes>
+            <Footer/>
           </StyledEngineProvider>
         </div>
       </CartProvider>
