@@ -8,7 +8,9 @@
 <br>
 
 ⚪ Create-React-App (React Js)
+<br>
 ⚪ Firebase
+<br>
 ⚪ MUI (mui.com)
 
 <br><br>
@@ -60,7 +62,16 @@ npm start
 ## Vista del proyecto:
 
 Home
-![home](https://github.com/MarceloLuisMoreno/Refugio-Moreno/blob/main/src/assets/avanceProyecto/home.png?raw=true)
+![home](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/home.png?raw=true)
+![menu](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/menu.png?raw=true)
+![menuFilter](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/menuFilter.png?raw=true)
+![itemDetail](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/itemDetail.png?raw=true)
+![cartList](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/cartList.png?raw=true)
+![cartList1](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/cartList1.png?raw=true)
+![dataBuyer](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/dataBuyer.png?raw=true)
+![checkout](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/checkOut.png?raw=true)
+![order](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/orderNumb.png?raw=true)
+![alerts](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/alerts.png?raw=true)
 
 
 # Autor ✒️
