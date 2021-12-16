@@ -63,14 +63,32 @@ npm start
 
 Home
 ![home](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/home.png?raw=true)
+
+Menu
 ![menu](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/menu.png?raw=true)
+
+Menu Filter
 ![menuFilter](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/menuFilter.png?raw=true)
+
+ItemDetail
 ![itemDetail](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/itemDetail.png?raw=true)
+
+CartList
 ![cartList](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/cartList.png?raw=true)
+
+CartList
 ![cartList1](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/cartList1.png?raw=true)
+
+DataBuyer
 ![dataBuyer](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/dataBuyer.png?raw=true)
+
+Checkout
 ![checkout](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/checkOut.png?raw=true)
+
+Order
 ![order](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/orderNumb.png?raw=true)
+
+Alert
 ![alerts](https://github.com/agusvelaz/myTienda/blob/main/src/assets/img/imgApp/alerts.png?raw=true)
 
 
