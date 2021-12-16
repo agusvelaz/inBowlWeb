@@ -1,6 +1,6 @@
 import {AlertTitle, Typography, Modal, Box, Button } from "@mui/material";
 import { useState } from "react";
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import InfoIcon from '@mui/icons-material/Info';
 const style = {
   position: "absolute",
   color: "#ffffff",
@@ -15,7 +15,7 @@ const style = {
   textAlign: "center",
 };
 
-const AlertStocking = ({ stock, name }) => {
+const AlertItemIncart = ({name}) => {
   const [open, setOpen] = useState(true);
 
   const handleClose = (event, reason) => {
@@ -32,21 +32,20 @@ const AlertStocking = ({ stock, name }) => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Box sx={{ color: "#f57c00",display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <WarningAmberIcon/>
+        <Box sx={{ color: "#0288d1",display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <InfoIcon />
         <AlertTitle sx={{ margin:2}}>¡UPS!</AlertTitle>
-        <WarningAmberIcon/>
+        <InfoIcon />
         </Box>
         <Typography
           id="modal-modal-title"
           variant="subtitle1"
           sx={{ color: "#ffffff" }}
         >
-          No puedes agregar mas cantidad porque el producto "{name}" cuenta con
-          solo {stock} unidades en stock.
+        "{name}" ya se encuentra en tu carrito, puedes dirigirte alli si deseas modificar sus detalles.
         </Typography>
         <Button
-            sx={{color: "#f57c00"}}
+            sx={{color: "#0288d1"}}
             variant="text"
             disableElevation
             size="small"
@@ -58,4 +57,4 @@ const AlertStocking = ({ stock, name }) => {
     </Modal>
   );
 };
-export default AlertStocking;
+export default AlertItemIncart;

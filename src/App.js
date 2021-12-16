@@ -8,8 +8,8 @@ import NavBar from "./components/navBar/navBar";
 import ItemListContainer from "./components/itemList/itemListContainer";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemList/itemDetail";
-import ItemState from "./contexts/itemsState";
 import CartProvider from "./contexts/cartProvider";
+import ItemAdded from "./components/cart/itemAdded";
 import CartList from "./components/cart/cartList"
 import BuyerData from "./components/cart/buyerData"
 import Checkout from "./components/cart/checkout"
@@ -23,7 +23,7 @@ function App() {
   console.log(currentItems);
   return (
     <BrowserRouter>
-      <ItemState>
+
       <CartProvider>
         <div className="App">
           <StyledEngineProvider injectFirst>
@@ -39,7 +39,11 @@ function App() {
               <Route path="/category/:cat" element={<ItemListContainer />} />
               <Route
                 path="/menu/:id"
-                element={<ItemDetail currentItems={currentItems} />}
+                element={<ItemDetail />}
+              />
+              <Route
+                path="/added/:id"
+                element={<ItemAdded  />}
               />
 
               <Route path="/nosotros" element={<h1>Nosotros</h1>} />
@@ -56,7 +60,7 @@ function App() {
           </StyledEngineProvider>
         </div>
       </CartProvider>
-      </ItemState>
+  
     </BrowserRouter>
   );
 }

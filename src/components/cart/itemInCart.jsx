@@ -2,10 +2,18 @@ import React, { useEffect, useState, useContext } from "react";
 import { Box, Typography, Button, CardMedia } from "@mui/material";
 import CartContext from "../../contexts/cartContext";
 import CartCount from "./cartCount";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
 
+const useStyles = makeStyles({
+  button: {
+    textDecoration: "none",
+  },
+});
+
 export default function ItemInCart() {
+  const classes = useStyles();
   const {
     setItemsInCart,
     itemsInCart,
@@ -125,8 +133,12 @@ export default function ItemInCart() {
         }}
       >
         <Button
-          className="add  Cart"
-          sx={{ backgroundColor: "#8d582ee6", width: 200 }}
+          sx={{
+            backgroundColor: "#000000",
+            width: 200,
+            color: "#ffffff",
+            border: "2px solid #7d6644",
+          }}
           variant="contained"
           disableElevation
           onClick={() => {
@@ -135,15 +147,18 @@ export default function ItemInCart() {
         >
           Limpiar Carrito
         </Button>
-        <Link to="/cart/buyerData"  >
+        <Link to="/cart/buyerData" className={classes.button}>
           <Button
-            className="add  Cart"
-            sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
+            sx={{
+              backgroundColor: "#8d582ee6",
+              width: 200,
+              marginTop: 1,
+              textDecoration: "none",
+            }}
             variant="contained"
             onClick={() => {
               setItemsInCart(itemsInCart);
             }}
-            
           >
             CONTINUAR COMPRA
           </Button>

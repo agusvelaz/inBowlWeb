@@ -3,7 +3,7 @@ import {CardActions, Button} from "@mui/material";
 import { AddShoppingCart } from "@material-ui/icons";
 import { useState } from "react";
 import AlertStocking from "../alert/alertStocking"
-import AlertAddCart from "../alert/alertAddCart"
+
 
 import CartContext from "../../contexts/cartContext";
 import { useContext } from "react";
@@ -30,7 +30,7 @@ export default function ItemCount({ stock, name, item }) {
     
     
     
-    return (
+    return (<>
       
       <CardActions className="cardAction" sx={{padding:0}}>
 
@@ -85,12 +85,9 @@ export default function ItemCount({ stock, name, item }) {
           }, 10000)}/>
           
         }
-        {/* {addCartMessage &&
-        <AlertAddCart stock={stock} name={name} message={setTimeout(() => {
-          setCartMessage("")
-        }, 10000)}/>
-        } */}
+
       </CardActions> 
+      </>
     );
 
   }

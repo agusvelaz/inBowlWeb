@@ -1,6 +1,6 @@
 # inBowl
 
-### inBowl es una tienda de comida desarrollada en React Js donde el usuario encontrara varias seccion para navegar. Tambien manejamos la funcionalidad de un carrito con los productos seleccionado por el usuario para luego crear una orden de compra.
+### inBowl es una tienda de comida desarrollada en React Js, en una single-page application (SPA) en donde se puede navegar por los distintos productos, filtrando entre categorías e ir a sus detalles que incluyen toda la informacion del producto (descripción, foto y precio) y permite agregarlos al carrito. También se pueden ver y modificar los elementos del carrito, para luego finalizar la compra de los elementos cargados al mismo a través del llenado de un formulario de compra. Y finaliza guardando la orden de compra (con todos sus productos más la fecha de compra) en una base de datos del proyecto, alojada en Firebase.
 <br><br>
 
 
@@ -9,15 +9,14 @@
 
 ⚪ Create-React-App (React Js)
 ⚪ Firebase
-⚪ MUI
-⚪ 
+⚪ MUI (mui.com)
 
 <br><br>
 
 # Instalación para poder usarlo 📋
 <br>
 
-### 1- Instalar las dependencias de React Js. 🔧
+### 1- Instalar las dependencias. 🔧
 <br>
 
 〰️〰️〰️

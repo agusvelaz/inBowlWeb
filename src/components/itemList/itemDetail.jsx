@@ -14,6 +14,7 @@ import CartContext from "../../contexts/cartContext";
 //firebase
 import { db } from "../../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { height } from "@mui/system";
 // firebase
 
 const useStyles = makeStyles({
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
     backgroundColor: "#0a0a0a",
     color: "#ffffff",
     display: "flex",
+    flexDirection: {sm:"column", md:"row"},
   },
   linksRef: {
     color: "white",
@@ -34,10 +36,10 @@ export default function ItemDetail() {
   const [Loader, setLoader] = useState(true);
   // console.log(id);
   const [showItemDetail, setShowItemDetail] = useState([]);
-  const {totalQuantity} = useContext(CartContext);
+  const { totalQuantity } = useContext(CartContext);
 
   useEffect(() => {
-    totalQuantity()
+    totalQuantity();
     setLoader(true);
     const itemsCollection = doc(db, "items", id);
 
@@ -81,18 +83,18 @@ export default function ItemDetail() {
           </Link>
           <Card
             sx={{
-              marginTop: 0,
-              marginBottom: 2,
-              // marginLeft: { sm: 20, xl: 35 },
-              // marginRight: { sm: 20, xl: "auto" },
               maxWidth: { xl: 1200, lg: 1100 },
+              height:{sm:510, xs:"auto"},
               margin: "auto",
+              flexDirection: {xs:"column", sm:"row"},
+              alignItems: "center",
+              marginBottom:2
             }}
             className={classes.cardItem}
           >
             <CardMedia
               component="img"
-              sx={{ width: { xl: 700, lg: 550 } }}
+              sx={{ width: {  xs:450, md:450, lg: 550 ,xl: 700}, }}
               image={showItemDetail.img}
               alt="item img"
             />
@@ -112,7 +114,12 @@ export default function ItemDetail() {
                   padding: 0,
                 }}
               >
-                <Typography component="div" variant="h4" color="#ffffff" sx={{textAlign: "start"}}>
+                <Typography
+                  component="div"
+                  variant="h4"
+                  color="#ffffff"
+                  sx={{ textAlign: "start" }}
+                >
                   {showItemDetail.name.toUpperCase()}
                 </Typography>
                 <Typography
@@ -145,6 +152,7 @@ export default function ItemDetail() {
           </Card>
         </Box>
       )}
+      
     </>
   );
 }

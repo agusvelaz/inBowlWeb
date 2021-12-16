@@ -1,5 +1,12 @@
-import { Box, Typography, Divider, Button, Modal } from "@mui/material";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {
+  Box,
+  Typography,
+  Divider,
+  Button,
+  Modal,
+  AlertTitle,
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState, useContext } from "react";
 import CartContext from "../../contexts/cartContext";
 import { Link } from "react-router-dom";
@@ -29,20 +36,20 @@ const useStyles = makeStyles({
     color: "#7d6644",
     fontWeight: "bold",
   },
-  iconCheck:{
-    color: "#7d6644",
-    fontSize: 150
-  }
+  iconCheck: {
+    color: "#388e3c",
+    fontSize: 150,
+  },
 });
 const style = {
-  position: 'absolute',
+  position: "absolute",
   color: "#ffffff",
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#0a0a0a',
-  border: '2px solid #7d6644',
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: {xs:350,md:550 },
+  bgcolor: "#0a0a0a",
+  border: "2px solid #7d6644",
   boxShadow: 24,
   p: 4,
   textAlign: "center",
@@ -50,7 +57,7 @@ const style = {
 
 export default function Checkout() {
   const classes = useStyles();
-  const [orderId, setOrderId] = useState()
+  const [orderId, setOrderId] = useState();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
@@ -76,18 +83,15 @@ export default function Checkout() {
     addDoc(ordersCollection, newOrder)
       .then(({ id }) => {
         setOrderId(id);
-        setTimeout(handleOpen(), 2000)
-       
-        
+        setTimeout(handleOpen(), 2000);
       })
       .catch((error) => {
         console.log(error, "Error al ejecutar la orden");
       })
       .finally(() => {
-        
         clearCart();
         totalCart();
-        setNewOrder()
+        setNewOrder();
       });
   };
 
@@ -122,7 +126,7 @@ export default function Checkout() {
           sx={{ maxWidth: 1100, marginLeft: "auto", marginRight: "auto" }}
         />
         {newOrder ? (
-          <Box>
+          <Box sx={{ paddingBottom: 2 }}>
             <Typography
               component="div"
               variant="h6"
@@ -201,7 +205,7 @@ export default function Checkout() {
                 color="#7d6644"
                 sx={{ maxWidth: 300, marginLeft: "auto", marginRight: "auto" }}
               />
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <Typography id="modal-modal-description" sx={{ m: 2 }}>
                 {newOrder.items.map((i) => (
                   <>
                     <Typography color="#ffffff">
@@ -215,13 +219,16 @@ export default function Checkout() {
                 color="#7d6644"
                 sx={{ maxWidth: 300, marginLeft: "auto", marginRight: "auto" }}
               />
+              <Typography color="#ffffff" sx={{ marginTop: 2 }}>
+                Total: ${newOrder.totalPrice}
+              </Typography>
             </Box>
 
             <Button
-              sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
+              sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 3 }}
               variant="contained"
               onClick={() => {
-                confirmarOrden()
+                confirmarOrden();
               }}
             >
               FINALIZAR COMPRA
@@ -230,31 +237,44 @@ export default function Checkout() {
         ) : (
           <p></p>
         )}
-         <Modal
-            open={open}
-            // onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Su compra ha sido realizada con exito 
-              </Typography>
-              <CheckCircleIcon className={classes.iconCheck}/>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Su numero de orden es : {orderId}
-              </Typography>
-              <Link to="/">
-            <Button
-              sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
-              variant="contained"
+        <Modal
+          open={open}
+          // onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Box
+              sx={{
+                color: "#388e3c",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize:100
+              }}
             >
-              Home
-            </Button>
-            </Link>
+              <CheckCircleIcon />
+              <AlertTitle sx={{ margin: 2, fontSize:30 }}>
+                ¡Su orden se completo con éxito!
+              </AlertTitle>
+              <CheckCircleIcon />
             </Box>
-           
-          </Modal>
+            <Typography id="modal-modal-description" sx={{ mt: 1 }} variant="h5">
+              Su numero de orden es :
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 1 }}variant="h5">
+              {orderId}
+            </Typography>
+            <Link to="/">
+              <Button
+                sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
+                variant="contained"
+              >
+                Home
+              </Button>
+            </Link>
+          </Box>
+        </Modal>
       </Box>
     </>
   );

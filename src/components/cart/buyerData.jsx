@@ -36,6 +36,15 @@ const useStyles = makeStyles({
     color: "#7d6644",
     fontWeight: "bold",
   },
+  button: {
+    backgroundColor: "#8d582ee6",
+    width: 200,
+    marginTop: "15px",
+    marginBottom: "15px",
+  },
+  link:{
+    textDecoration: "none"
+  }
 });
 
 export default function BuyerData() {
@@ -225,17 +234,13 @@ export default function BuyerData() {
             cols="50"
             onChange={handleChange}
           ></textarea>
-          <Button
-            sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
-            variant="contained"
-            type="submit"
-          >
+          <Button variant="text" type="outlined" sx={{color: "#ffffff", border: "2px solid #7d6644", margin: 2}}>
             CONFIRMAR DATOS
           </Button>
           {newOrder ? (
-            <Link to="/cart/checkout">
+            <Link to="/cart/checkout" className={classes.link}>
               <Button
-                sx={{ backgroundColor: "#8d582ee6", width: 200, marginTop: 1 }}
+                className={classes.button}
                 variant="contained"
                 type="submit"
               >
