@@ -7,7 +7,7 @@ import Loading from "../loading/loading";
 //firebase
 import { db } from "../../firebase/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-// firebase
+// firebase.
 
 const ItemListContainer = () => {
   const [itemsList, setItems] = useState([]);
