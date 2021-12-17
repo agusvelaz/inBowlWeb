@@ -1,7 +1,7 @@
 import ItemList from "./itemList";
 import React, { useEffect, useState } from "react";
 
-import NavBarCat from "../navBar/navCat";
+import NavCat from "../navBar/navCat";
 import Loading from "../loading/loading";
 
 //firebase
@@ -35,7 +35,7 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <NavBarCat itemsList={itemsList} setShowItemList={setShowItemList} />
+      <NavCat itemsList={itemsList} setShowItemList={setShowItemList} />
       {Loader ? <Loading /> :<ItemList itemsList={itemsList} showItemList={showItemList} />}
     </>
   );

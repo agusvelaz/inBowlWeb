@@ -24,7 +24,7 @@ const useStyles = makeStyles((themeConfig) => ({
 }));
 
 
-export default function NavBarCat({ itemsList,  setShowItemList}) {
+export default function NavCat({ itemsList,  setShowItemList}) {
   const classes = useStyles();
 
   console.log(itemsList);
