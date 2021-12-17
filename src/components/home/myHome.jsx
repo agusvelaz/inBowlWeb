@@ -3,8 +3,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
-import { Container, Box, Typography, MenuItem } from "@mui/material";
-import Loading from "../loading/loading";
+import { Container, Box, Typography} from "@mui/material";
+
 import HomeLogo from "../../assets/img/homeImg3.png";
 import ChefOne from "../../assets/img/chef1.jpg";
 
@@ -36,7 +36,7 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <Container className={classes.homeLogo}>
-        <img src={HomeLogo} className={classes.homeImg}></img>
+        <img src={HomeLogo} className={classes.homeImg} alt="homeImg"></img>
       </Container>
       <Box
         sx={{
@@ -91,7 +91,7 @@ export default function Home() {
           </Typography>
         </Box>
         <Box className={classes.homeInfo}>
-          <img src={ChefOne} className={classes.homeImg}></img>
+          <img src={ChefOne} className={classes.homeImg} alt="chefImg"></img>
         </Box>
       </Box>
       <Box
@@ -103,7 +103,7 @@ export default function Home() {
         }}
       >
         <Box className={classes.homeInfo}>
-          <img src={ChefOne} className={classes.homeImg}></img>
+          <img src={ChefOne} className={classes.homeImg} alt="chefImg"></img>
         </Box>
         <Box
           sx={{

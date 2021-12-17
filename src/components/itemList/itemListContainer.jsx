@@ -6,7 +6,7 @@ import Loading from "../loading/loading";
 
 //firebase
 import { db } from "../../firebase/firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 // firebase.
 
 const ItemListContainer = () => {

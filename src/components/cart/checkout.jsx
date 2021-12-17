@@ -15,9 +15,6 @@ import { db } from "../../firebase/firebase";
 import {
   collection,
   addDoc,
-  getDoc,
-  doc,
-  writeBatch,
 } from "firebase/firestore";
 // firebase
 
@@ -65,7 +62,7 @@ export default function Checkout() {
   const { setNewOrder, newOrder, clearCart, totalCart } =
     useContext(CartContext);
 
-  console.log(newOrder);
+  // console.log(newOrder);
 
   const confirmarOrden = () => {
     console.log("orden confirmada");

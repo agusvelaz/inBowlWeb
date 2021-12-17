@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CartContext from "./cartContext";
-import { useContext, useEffect } from "react";
 import AlertItemAdded from "../components/alert/alertItemAdded"
 import AlertItemIncart from "../components/alert/alertItemInCart"
 
@@ -14,8 +13,7 @@ const Cart = (props) => {
 
   const [newOrder, setNewOrder] = useState()
 
-  console.log(itemsInCart);
-  console.log(addCartMessage)
+  // console.log(itemsInCart);
   //  FUNCION AGREGA AL CARRITO
   const addProduct = (item, quantity) => {
     const isInCart = itemsInCart.find((i) => i.id === item.id);
@@ -46,7 +44,7 @@ const Cart = (props) => {
   const setNewQuantityItem = (idItem, quantity) => {
     const element = itemsInCart.find(item => item.id === idItem);
     element.quantity = quantity;
-    console.log(itemsInCart)
+    // console.log(itemsInCart)
   }
 
   //  FUNCION CANTIDAD/UNIDADES TOTALES
@@ -65,8 +63,7 @@ const Cart = (props) => {
 
   const totalCart = () => {
     const total =itemsInCart.reduce((suma, product) => suma + (product.quantity * product.price), 0) 
-    console.log(total)
-   
+    
     setTotalCartPrice(total)
     return total;
 };
@@ -77,7 +74,6 @@ const Cart = (props) => {
     setItemsInCart([]);
 
 };
-  console.log(itemsInCart);
   return (<>
     <CartContext.Provider
       value={{

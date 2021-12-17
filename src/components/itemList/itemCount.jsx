@@ -26,7 +26,7 @@ export default function ItemCount({ stock, name, item }) {
     
     //context
     const { addProduct, itemsInCartTotal } = useContext(CartContext);
-    console.log(itemsInCartTotal)
+    // console.log(itemsInCartTotal)
     
     
     

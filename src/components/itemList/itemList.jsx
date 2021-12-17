@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 
 export default function ItemList({itemsList, showItemList}) {
   const classes = useStyles();
-  console.log(showItemList);
+  // console.log(showItemList);
   return (
     <div>
       
@@ -57,7 +57,7 @@ export default function ItemList({itemsList, showItemList}) {
 
         <div className="cardUl">
           {showItemList?.map((i) => {
-            console.log(i);
+            // console.log(i);
 
             return (
               <Link to={`/menu/${i.id}`} className={classes.linkCard}>

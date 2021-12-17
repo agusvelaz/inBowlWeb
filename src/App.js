@@ -2,14 +2,13 @@ import "./App.css";
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import NavBar from "./components/navBar/navBar";
 import ItemListContainer from "./components/itemList/itemListContainer";
 import Home from "./components/home/myHome";
 import ItemDetail from "./components/itemList/itemDetail";
 import CartProvider from "./contexts/cartProvider";
-import ItemAdded from "./components/cart/itemAdded";
 import CartList from "./components/cart/cartList"
 import BuyerData from "./components/cart/buyerData"
 import Checkout from "./components/cart/checkout"
@@ -22,7 +21,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 function App() {
   const [currentItems, setCurrentItems] = useState({});
 
-  console.log(currentItems);
+  // console.log(currentItems);
   return (
     <BrowserRouter>
 
@@ -43,11 +42,6 @@ function App() {
                 path="/menu/:id"
                 element={<ItemDetail />}
               />
-              <Route
-                path="/added/:id"
-                element={<ItemAdded  />}
-              />
-
               <Route path="/nosotros" element={<h1>Nosotros</h1>} />
 
               <Route

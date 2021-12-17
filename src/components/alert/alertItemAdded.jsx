@@ -1,15 +1,8 @@
 import { AlertTitle, Typography, Box, Button, Modal } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-const useStyles = makeStyles({
-  alert: {
-    color: "#ffffff",
-    backgroundColor: "#8d582ee6",
-  },
-});
+
 const style = {
   position: "absolute",
   color: "#ffffff",
@@ -26,7 +19,6 @@ const style = {
 
 const AlertItemAdded = ({ stock, name }) => {
   const [open, setOpen] = useState(true);
-  const classes = useStyles();
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;

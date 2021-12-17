@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Box, Typography, Button, CardMedia } from "@mui/material";
 import CartContext from "../../contexts/cartContext";
 import CartCount from "./cartCount";
@@ -25,7 +25,7 @@ export default function ItemInCart() {
   useEffect(() => {
     totalQuantity();
   }, []);
-  console.log(itemsInCart);
+  // console.log(itemsInCart);
 
   return (
     <>

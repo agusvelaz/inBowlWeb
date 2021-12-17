@@ -1,4 +1,4 @@
-import { Box, Typography, Divider, Button, Modal } from "@mui/material";
+import { Box, Typography, Divider, Button } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
 import CartContext from "../../contexts/cartContext";
 import { Link } from "react-router-dom";

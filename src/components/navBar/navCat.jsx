@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,21 +27,21 @@ const useStyles = makeStyles((themeConfig) => ({
 export default function NavCat({ itemsList,  setShowItemList}) {
   const classes = useStyles();
 
-  console.log(itemsList);
+  // console.log(itemsList);
 
 
   //SET FILTER CATEGORY
   let itemsFilt = []
   const setItemsCategori = (cat) => {
-    console.log(cat);
+    // console.log(cat);
     itemsList?.map((i) => {
       const name = i.name.toLowerCase();
       const category = cat.toLowerCase();
       if (name.includes(category)) {
-      console.log(i);
+      // console.log(i);
       itemsFilt.push(i)
       setShowItemList(itemsFilt)
-      console.log(itemsFilt)
+      // console.log(itemsFilt)
       }
     });
   };

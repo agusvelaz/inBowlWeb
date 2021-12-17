@@ -1,6 +1,5 @@
 import { CardActions, Button, Box, Typography } from "@mui/material";
 
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useState, useEffect } from "react";
 import AlertStocking from "../alert/alertStocking";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,25 +12,23 @@ const useStyles = makeStyles({
     margin: "10px",
     backgroundColor: "#8d582ee6",
     minWidth: 35,
-    height:30
+    height: 30,
   },
 });
 export default function CartCount({ stock, name, quantity, id, price }) {
-  const { deleteItemCart,setNewQuantityItem, totalQuantity, totalCart, itemsInCart } =
+  const { deleteItemCart, setNewQuantityItem, totalQuantity, totalCart } =
     useContext(CartContext);
   const classes = useStyles();
   const [newQuantity, setNewQuantity] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
-    setNewQuantity(quantity)
-  }, [])
+    setNewQuantity(quantity);
+  }, []);
   useEffect(() => {
-    setNewQuantityItem(id, newQuantity)
-    totalQuantity()
-    totalCart()
-  }, [newQuantity])
- 
-  
+    setNewQuantityItem(id, newQuantity);
+    totalQuantity();
+    totalCart();
+  }, [newQuantity]);
 
   return (
     <Box
@@ -54,16 +51,13 @@ export default function CartCount({ stock, name, quantity, id, price }) {
           display="flex"
           sx={{ alignItems: "center", flexDirection: "column" }}
         >
-          <Box
-            display="flex"
-            sx={{ alignItems: "center"  }}
-          >
+          <Box display="flex" sx={{ alignItems: "center" }}>
             <Button
               className={classes.buttonCart}
               onClick={() => {
                 if (newQuantity > 1) {
-                  setNewQuantity((newQuantity) => newQuantity - 1)
-                  totalQuantity()
+                  setNewQuantity((newQuantity) => newQuantity - 1);
+                  totalQuantity();
                 } else {
                   setNewQuantity(1);
                 }
@@ -71,15 +65,14 @@ export default function CartCount({ stock, name, quantity, id, price }) {
             >
               -
             </Button>
-            <Typography margin={1} >{newQuantity}</Typography>
+            <Typography margin={1}>{newQuantity}</Typography>
             <Button
               className={classes.buttonCart}
               onClick={() => {
-                if (newQuantity < stock){
-                  setNewQuantity((newQuantity) => newQuantity + 1)
-                  totalQuantity()
-
-                }else{
+                if (newQuantity < stock) {
+                  setNewQuantity((newQuantity) => newQuantity + 1);
+                  totalQuantity();
+                } else {
                   setErrorMessage("error");
                 }
               }}
@@ -92,8 +85,12 @@ export default function CartCount({ stock, name, quantity, id, price }) {
 
         <Button
           className="add  Cart"
-          sx={{ marginTop: 1, backgroundColor: '#8d582ee6', minWidth: 30,
-          height:35 }}
+          sx={{
+            marginTop: 1,
+            backgroundColor: "#8d582ee6",
+            minWidth: 30,
+            height: 35,
+          }}
           variant="contained"
           disableElevation
           size="large"
